@@ -16,7 +16,7 @@ body {
 div.wrap {
 	position: relative;
 	background: rgba(240, 240, 240, 0.8);
-	width: 70%;
+	width: 80%;
 	border-radius: 8px;
 	padding: 20px;
 	margin: auto;
@@ -71,6 +71,44 @@ div.wrap {
 	margin:0px;
 }
 
+.life span {
+	position: absolute;
+	color: white;
+	right: 50%;
+	top: 0;
+}
+
+.life span#e1 {
+	right: 60%;
+}
+
+.life span#e3 {
+	right: 40%;
+}
+
+.life div {
+	position: absolute;
+	top: -22px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+}
+
+.life div#seikai{
+	background: skyblue;
+	right: 30%;
+}
+
+.life div#batsu{
+	right: -10%;
+	background: gray;
+}
+
+.life div#word_seikai{
+	right: 15%;
+	background: blue;
+}
+
 
 
 div input.input {
@@ -78,12 +116,12 @@ div input.input {
 			height: 50px;
 			font-size: 40px;
 			text-align: center;
-			left: 38%;
+			left: 40%;
 			position: relative;
 		}
 div #input label {
 	position: relative;
-	left: 33%;
+	left: 37%;
 	font-family: 'Cafe24Ssurround';
 	font-size: 32px;
 	color: white;
@@ -101,7 +139,7 @@ div #input label {
 			font-family: 'Cafe24Ssurround';
 			color: white;
 			position: relative;
-			left:46%;
+			left:40%;
 		}
 		button:hover {
 			box-shadow: 0px 0px 0px 0px #1E8185;
@@ -131,13 +169,30 @@ div #input label {
 			background: #5DC8CD;
 			box-shadow: 0px 5px 0px 0px #1E8185;
 			position: relative;
-			left: 46%;
+			left: 40%;
 			font-size:24px;
 			font-weight: bold;
 			font-family: 'Cafe24Ssurround';
 			color: white;
 		}
 		#Hint:hover {
+			box-shadow: 0px 0px 0px 0px #1E8185;
+		}
+		
+		.btn #Answer {
+			width: 150px;
+			height: 50px;
+			margin: 20px 0px;
+			background: #5DC8CD;
+			box-shadow: 0px 5px 0px 0px #1E8185;
+			position: relative;
+			left: 46%;
+			font-size:24px;
+			font-weight: bold;
+			font-family: 'Cafe24Ssurround';
+			color: white;
+		}
+		.btn #Answer:hover {
 			box-shadow: 0px 0px 0px 0px #1E8185;
 		}
 		

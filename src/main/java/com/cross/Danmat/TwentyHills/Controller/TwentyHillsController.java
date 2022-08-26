@@ -24,11 +24,15 @@ public class TwentyHillsController {
 	@GetMapping
 	public String TH_Games(Model model, TwentyHills twentyHills) {
 		twentyHills = twentyHillsService.load_word();
+		String mosaic = "";
 		String input = "<div id=input><label>단어 : </label>";
 		String word = twentyHills.getWord();
+		for(int i = 0; i< word.length(); i++) {
+			mosaic += "○";
+		}
 		List<String> hint = new ArrayList<String>();
 		String[] hint_list = twentyHills.getDiscription().split("/");
-		String[] Example_list = twentyHills.getExample().replaceAll(word, "○○").split("/");
+		String[] Example_list = twentyHills.getExample().replaceAll(word, mosaic).split("/");
 		int life = 20;
 		hint.add(hint_list[rd.nextInt(hint_list.length)]);
 		for(int i = 0; i < Example_list.length; i++) {

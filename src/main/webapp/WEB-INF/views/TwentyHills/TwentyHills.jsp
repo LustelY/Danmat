@@ -23,6 +23,12 @@
                         <div class="wrap">
 		<div class="life">
 			<p id="life"><label>남은 횟수:</label>&nbsp;&nbsp;${life }</p>
+			<div id="seikai"></div>
+			<span id="e1"> = 정답</span>
+			<div id="word_seikai"></div>
+			<span id="e2"> = 자리가 틀림</span>
+			<div id="batsu"></div>
+			<span id="e3"> = 틀림</span>
 			<%String userid = (String)session.getAttribute("userid"); 
 			if(userid == null){%>
 			<p id="user"> 유저 ID: guest </p>
@@ -42,6 +48,7 @@
 		<div class="btn">
 		<button>입력</button>
 		<input type="submit" id="Hint" value="힌트 보기"/>
+		<input type="hidden" id="Answer" value="정답 보기"/>
 		</div>
 		<form method="get" action="../Game/TwentyHills">
 		<input type="hidden" id="Restart" value="다시하기"/>
@@ -49,11 +56,11 @@
 		<form method="get" action="../game">
 		<input type="submit" id="Exit" value="종료"/>
 		</form>
-	</div>              
-                        </div>
-                    </div>
-                </div>
-            </div>
+	</div>             
+    </div>
+    </div>
+    </div>
+    </div>
         </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="/Danmat/resources/js/animation.js"></script>
 	<script>
@@ -99,7 +106,11 @@
 							}
 							document.querySelector('button').setAttribute("hidden", "true");
 							document.querySelector('#Restart').setAttribute("type","submit");
+							document.querySelector("#Hint").setAttribute("type","hidden");
+							document.querySelector("input#Answer").setAttribute("type","hidden");
+							document.querySelector("#input label").remove();
 							document.querySelector('p').remove();
+							End_game();
 						}
 						if(life > 0){
 							life--;
@@ -111,7 +122,11 @@
 								}
 								document.querySelector('button').setAttribute("hidden","true");
 								document.querySelector('#Restart').setAttribute("type","submit");
+								document.querySelector("#Hint").setAttribute("type","hidden");
+								document.querySelector("input#Answer").setAttribute("type","hidden");
+								document.querySelector("#input label").remove();
 								document.querySelector('p').remove();
+								End_game();
 							}
 						count = 0;
 						check = 0;
@@ -124,10 +139,44 @@
 				document.querySelector('#Hint').addEventListener('click',
 					function(){
 					h_count++;
+					if(document.querySelectorAll(".hint").length <= h_count){
+						End_game();
+						document.querySelector('input#Answer').setAttribute("type","submit");
+						console.log("힌트가 없습니다.");
+					}else {
+					life--;
+					document.getElementById("life").innerHTML = "<label>남은 횟수:</label>&nbsp;&nbsp;"+life;
 					document.querySelectorAll(".hint")[h_count].removeAttribute("hidden");
+					if(life == 1){
+						for(let i = 0; i<result.length; i++){
+							input[i].setAttribute("type","hidden");
+						}
+						End_game();
+					}
+					
+					}
+				document.querySelector('input#Answer').addEventListener('click',
+						function(){
+					document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+					for(let i = 0; i<result.length; i++){
+						input[i].setAttribute("type","hidden");
+					}
+					End_game();
+				})
+				if(life == 0){
+					document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+					End_game();
+				}
 				});
-		
-		
+			function End_game(){
+				document.querySelector('button').setAttribute("hidden","true");
+				document.querySelector('#Restart').setAttribute("type","submit");
+				document.querySelector("#Hint").setAttribute("type","hidden");
+				document.querySelector("input#Answer").setAttribute("type","hidden");
+				document.querySelector("#input").remove();
+				document.querySelector('.life p#life').remove();
+				document.querySelector('p').remove();
+			}
 	</script>
 </body>
 </html>
