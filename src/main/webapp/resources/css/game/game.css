@@ -1,0 +1,119 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+/* Galmuri11을 사용하려면 */
+/* font-family: 'Galmuri11'; */
+
+/* Galmuri11 Bold를 사용하려면 */
+/* font-family: 'Galmuri11'; */
+/* font-weight: 700; */
+
+/* Galmuri11 Condensed를 사용하려면 */
+/* font-family: 'Galmuri11'; */
+/* font-stretch: condensed; */
+
+/* Galmuri9을 사용하려면 */
+/* font-family: 'Galmuri9'; */
+
+/* Galmuri7을 사용하려면 */
+/* font-family: 'Galmuri7'; */
+@font-face {
+    font-family: 'HBIOS-SYS';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/HBIOS-SYS.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'BinggraeSamanco';
+  src: url("./font/BinggraeSamanco.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Binggrae-Bold';
+  src: url("./font/BinggraeSamanco-Bold.otf") format("truetype");
+}
+
+html,body { height: 100%; }
+ul,ol { list-style: none; }
+a { color: #666666; }
+
+li { position: relative; }
+
+body {
+  overflow: hidden;
+  font-family: 'HBIOS-SYS';
+  position: relative;
+  background: linear-gradient(180deg,#c2bde3 ,#fbeef0 65%);
+}
+
+.black {
+  position: absolute;
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+  background: black;
+  animation-name: move;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+.backgroundImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/game/3137882.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  position: relative;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 200px;
+  padding-top: 100px;
+  color: #fff;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+
+.game {
+  font-size: 40px;
+  color: #fff;
+}
+.selGame1 {
+  font-family: 'HBIOS-SYS';
+}
+
+.startBtn a{
+  display: block;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #fff;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+@keyframes move {
+0%{
+  height: 100%;
+}40% {
+  height: 100%;
+}100% {
+  height: 0;
+}
+}
