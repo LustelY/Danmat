@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes">
 <meta name="description" content="">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>main</title>
+<title>게시판</title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/pricing/">
 
@@ -46,23 +45,24 @@
 	<div class="bigWrap">
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-1 mb-1">
 			<div class="my-0 mr-md-auto font-weight-normal topLogo">
-				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span>danmat</span></a>
+				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span style="font-weight: bold;">danmat</span></a>
 			</div>
 			<nav class="navMenu">
 				<a class="p-2" href="game">게임</a>
+				<a class="p-2" href="notice">소식</a>
 				<a class="p-2" href="ranking">랭킹</a>
-				<a class="p-2" href="board">게시판</a>
+				<a class="p-2" href="#">게시판</a>
 				<%
 				String userid = (String) session.getAttribute("userid");
 				if (userid == null) {
 				%>
 				<a class="p-2" href="signUp">회원가입</a>
-				<a class="btn loginBtn"	href="/teamProject/logIn" style="line-height: 20px;">로그인</a>
+				<a class="btn loginBtn"	href="logIn" style="line-height: 20px;">로그인</a>
 				<%
 				} else if (userid.contentEquals("admin")) {
 				%>
 				<span class="p-2" style="font-size: 20px; color: white; line-height: 20px;"><a class="admin" href="mgMain">관리자페이지</a></span>
-				<a class="btn loginBtn"	href="../../logOut">로그아웃</a>
+				<a class="btn loginBtn"	href="logOut">로그아웃</a>
 				<%
 				} else {
 				%>
@@ -118,7 +118,7 @@
 												<!--  <td style="text-align: left;"><a href="board/boardDetail?board_idx=<c:out value='${board.board_idx}'/>" style="border: none; text-decoration: none;">
 													<c:out value="${board.title}"/></a></td>    -->
 												<!--  <td style="text-align: left;"><a href="$board/boardDetail?board_idx=${board.board_idx}">${board.title}</a></td>  -->
-												<td style="text-align: left;"><a href="<c:url value='/board/boardDetail?board_idx=${board.board_idx}'/>">${board.title}</a></td>
+												<td style="text-align: left;"><a href="<c:url value='/board/boardDetail?board_idx=${board.board_idx}'/>">${board.title}&nbsp;(${board.replyCount})</a></td>
                  			    				<td><c:out value="${board.userId}"/></td>
 	                    						<td><c:out value="${board.createDate}"/></td>
 	                    						<td><c:out value="${board.readCount}"/></td>
@@ -126,19 +126,19 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<a href="boardCreate" class="writer">글쓰기</a>
+								<a href="board/boardCreate" class="writer">글쓰기</a>
 							</div>
 						</div>
 						<div class="paging">
 							<ul class="paging" id="pagination">
 								<li><a href="board">1</a></li>
-								<li><a href="board">2</a></li>
 								<li><a href="board">...</a></li>
 							</ul>
 						</div>
 					</section>
 				</div>
 			</div>
+			
 			<footer>
 				<div class="inner">
 					<div class="fbox">
