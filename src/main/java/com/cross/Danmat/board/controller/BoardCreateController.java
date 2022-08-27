@@ -13,7 +13,7 @@ import com.cross.Danmat.board.domain.Board;
 import com.cross.Danmat.board.service.BoardServiceImpl;
 
 @Controller
-@RequestMapping("boardCreate")
+@RequestMapping("board/boardCreate")
 public class BoardCreateController {
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DataSourceConfig.class);
 	BoardServiceImpl boardService = context.getBean("boardService", BoardServiceImpl.class);
@@ -33,15 +33,4 @@ public class BoardCreateController {
 		context.close();
 		return "redirect:/board";
 	}
-
-	// 2번 방법
-//	@PostMapping
-//	public String CreateBoard(@ModelAttribute("board")
-//	Board board, Model model) {
-//		boardService.boardCreate(board);
-//		model.addAttribute("board", board);
-//		return "redirect:/board";
-//	}
-	
-
 }

@@ -10,4 +10,5 @@ public interface BoardService {
 	public void boardUpdate(Board board); // 게시글 수정
 	public void boardDelete(Board board); // 게시글 삭제
 	public void readCount(int board_idx); // 조회수
+//	public void replyCount(int board_idx); // 댓글 수?
 }

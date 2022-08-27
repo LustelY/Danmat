@@ -47,6 +47,7 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.boardDelete(board);	
 	}
 
+	// 조회수
 	@Override
 	public void readCount(int board_idx) {
 		boardDao.readCount(board_idx);		
