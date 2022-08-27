@@ -26,8 +26,8 @@ public class DataSourceConfig {
 		DataSource ds = new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/danmat?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull");
-		ds.setUsername("root");
-		ds.setPassword("admin");
+		ds.setUsername("danmat");
+		ds.setPassword("danmat");
 		ds.setInitialSize(2);
 		ds.setMaxActive(10);
 		ds.setMaxIdle(10);

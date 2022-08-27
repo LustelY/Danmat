@@ -46,11 +46,10 @@
 	<div class="bigWrap">
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-1 mb-1">
 			<div class="my-0 mr-md-auto font-weight-normal topLogo">
-				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span style="font-weight: bold;">danmat</span></a>
+				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span>danmat</span></a>
 			</div>
 			<nav class="navMenu">
 				<a class="p-2" href="game">게임</a>
-				<a class="p-2" href="#">소식</a>
 				<a class="p-2" href="ranking">랭킹</a>
 				<a class="p-2" href="board">게시판</a>
 				<%

@@ -7,54 +7,159 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-  <title>게임 선택</title>
-  <!-- <link rel="stylesheet" href="<c:url value='/resources/css/common/initial.min.css'/>">
-    <link rel="stylesheet" href="<c:url value='/resources/css/game/game.css'/>">
-    <script type="text/javascript" src="<c:url value='/resources/js/jquery.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script> -->
-  <link rel="stylesheet" href="resources/css/game/game.css">
-  <script type="text/javascript" src="./js/common.js"></script>
+  <title>game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="<c:url value='/resources/css/common/initial.css'/>">
+   <link rel="stylesheet" href="<c:url value='/resources/css/game/game.css'/>">
+  <style>
+       html,
+       body {
+         position: relative;
+         height: 100%;
+       }
+
+       body {
+         background: #F3F1F5;
+         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+         font-size: 14px;
+         color: #000;
+         margin: 0;
+         padding: 0;
+         font-family: 'BinggraeSamanco';
+       }
+
+       .swiper {
+         width: 100%;
+         height: 100%;
+       }
+
+       .swiper-slide {
+         text-align: center;
+         font-size: 18px;
+         background: #fff;
+
+         /* Center slide text vertically */
+         display: -webkit-box;
+         display: -ms-flexbox;
+         display: -webkit-flex;
+         display: flex;
+         -webkit-box-pack: center;
+         -ms-flex-pack: center;
+         -webkit-justify-content: center;
+         justify-content: center;
+         -webkit-box-align: center;
+         -ms-flex-align: center;
+         -webkit-align-items: center;
+         align-items: center;
+       }
+
+       .swiper-slide img {
+       display: block;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+
+       }
+     </style>
 </head>
 
 <body>
-  <div class="wrap">
-
-
-    <div class="backgroundImg">
-      <div class="header">
-        <!-- <div class="game-over">Game Over</div> -->
-        <div class="title">GAME</div>
-        <!-- <button class="start-btn">다시 시작</button> -->
-        <!-- <button class="end-btn">포기</button> -->
-      </div>
-      <div class="selGame selGame1">
-        <!-- <h1 class="game game1">끝말잇기</h1> -->
-        <!-- <h2 class="startBtn"><a href="wordRelay">끝말잇기</a></h2> -->
-        <button class="custom-btn btn-11" id="custom-btn"><a href="Game/wordRelay">끝말잇기</a></button>
-        <img src="resources/images/game/Red_Arrow_Left.svg" class="arrowimg">
-      </div>
-      <div class="selGame">
-        <!-- <h1 class="game">스무고개</h1> -->
-        <!-- <h2 class="startBtn"><a href="Game/TwentyHills">스무고개</a></h2> -->
-        <button class="custom-btn btn-11"><a href="Game/TwentyHills">스무고개</a></button>
-        <img src="resources/images/game/Red_Arrow_Left.svg" class="arrowimg">
-      </div>
-      <div class="selGame">
-        <!-- <h1 class="game">메인페이지</h1> -->
-        <!-- <h2 class="startBtn"><a href="/Danmat/main">메인페이지</a></h2> -->
-        <button class="custom-btn btn-11"><a href="#">십자말풀이</a></button>
-        <img src="resources/images/game/Red_Arrow_Left.svg" class="arrowimg">
-      </div>
-      <div class="selGame">
-        <!-- <h1 class="game">메인페이지</h1> -->
-        <!-- <h2 class="startBtn"><a href="/Danmat/main">메인페이지</a></h2> -->
-        <button class="custom-btn btn-11"><a href="main">메인페이지</a></button>
-        <img src="resources/images/game/Red_Arrow_Left.svg" class="arrowimg">
-      </div>
-
+  <header class="header">
+    <div>
+      <div class="logoImg"></div>
+      <a href="main" style="text-decoration: none; color: black;"><h2 class="logo-title">danmat <em style="font-size:12px;">단맛</em></h2></a>
     </div>
+      <div class="topbtn-wrap" style="z-index: 500;">
+        <h1><a href="main">메인화면</a></h1>
+        <h1><a href="ranking">랭킹</a></h1>
+        <h1><a href="board">게시판</a></h1>
+         <%
+        String userid = (String)session.getAttribute("userid");
+        if(userid == null){ %>
+        <h1><a href="signUp">회원가입</a></h1>
+        <h1><a href="logIn">로그인</a></h1>
+        <% }else { %>     
+        	<h1><%= userid %>님</h1>
+            <h1><a href="logOut">로그인</a></h1>
+       <% } %>
 
+      </div>
+  </header>
+  <div class="wrap">
+    <div class="swiper-wrap">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide first">
+            <div class="main-wrap first">
+              <div class="game-title">
+                  <h1>CrossWord</h1>
+              </div>
+              <div class="circle">
+              <div class="fluid"></div>
+              <div class="fluid2"></div>
+              <div class="img"></div>
+              </div>
+              <div class="text-wrap">
+                  <h1 class="start-btn"><a href="#">시작하기</a></h1>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide secound">
+            <div class="main-wrap second">
+              <div class="game-title">
+                  <h1>WordRelay</h1>
+              </div>
+              <div class="circle">
+              <div class="fluid"></div>
+              <div class="fluid2"></div>
+              <div class="img"></div>
+              </div>
+              <div class="text-wrap">
+                  <h1 class="start-btn"><a href="wordRelay">시작하기</a></h1>
+              </div>
+          </div>
+          </div>
+          <div class="swiper-slide third">
+            <div class="main-wrap third">
+              <div class="game-title">
+                  <h1>TwentyHills</h1>
+              </div>
+              <div class="circle">
+              <div class="fluid"></div>
+              <div class="fluid2"></div>
+              <div class="img"></div>
+              </div>
+              <div class="text-wrap">
+                  <h1 class="start-btn"><a href="Game/TwentyHills">시작하기</a></h1>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
   </div>
+  <footer>
+    <p>danmat&copy</p>
+  </footer>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+  var bullet = ['크로스워드', '끝말잇기', '스무고개'];
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+       return '<div class="' + className + '"><span class="bulletCover">' + (bullet[index]) + '</span></div>';
+     }
+      }
+    });
+  </script>
 </body>
 
 </html>
