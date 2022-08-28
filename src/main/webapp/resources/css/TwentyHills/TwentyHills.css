@@ -9,13 +9,16 @@
 
 body {
 	font-family: 'Cafe24Ssurround';
-	background: skyblue;
+	background: linear-gradient(180deg,#8CD790,#77AF9C 60%);
 	overflow: hidden;
+	color: #285943;
 }
 
 div.wrap {
-	position: relative;
-	background: rgba(240, 240, 240, 0.8);
+	position: absolute;
+	background: #D7FFF1;
+	left: 10%;
+	top: 3%;
 	width: 80%;
 	border-radius: 8px;
 	padding: 20px;
@@ -30,16 +33,21 @@ div.wrap {
 }
 
 .wrap div.text-area{
-	background: skyblue;
+	background: linear-gradient(180deg,#8CD790,#77AF9C 80%);;
 	left: 0%;
 	height:500px;
 	-ms-overflow-style: none;
 	overflow-y: scroll;
-	color: ghostwhite;
+}
+
+.wrap div.text-area h2 {
+	margin-left: 10px;
+	font-size: 32px;
 }
 
 .wrap div.text-area h3 {
-	margin-left: 10px;
+	margin-left: 20px;
+	font-size: 24px;
 }
 
 .wrap div.text-area h3#Answer {
@@ -57,14 +65,12 @@ div.wrap {
 	font-size:18px;
 	font-weight: bold;
 	font-family: 'Cafe24Ssurround';
-	color: white;
 }
 
 .life p#user{
 	font-size:18px;
 	font-weight: bold;
 	font-family: 'Cafe24Ssurround';
-	color: white;
 	position: absolute;
 	right:0px;
 	top:0px;
@@ -73,7 +79,6 @@ div.wrap {
 
 .life span {
 	position: absolute;
-	color: white;
 	right: 50%;
 	top: 0;
 }
@@ -94,19 +99,19 @@ div.wrap {
 	border: 1px solid black;
 }
 
-.life div#seikai{
-	background: skyblue;
+.life div#A{
+	background: #8CD790;
 	right: 30%;
 }
 
-.life div#batsu{
+.life div#WA{
 	right: -10%;
-	background: gray;
+	background: #285943;
 }
 
-.life div#word_seikai{
+.life div#L_A{
 	right: 15%;
-	background: blue;
+	background: #77AF9C;
 }
 
 
@@ -124,7 +129,6 @@ div #input label {
 	left: 37%;
 	font-family: 'Cafe24Ssurround';
 	font-size: 32px;
-	color: white;
 }
 		.life {
 			position: absolute;

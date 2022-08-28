@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------
 -- 유저 테이블
 
-DROP TABLE User;
+DROP TABLE BOARD;
 
 CREATE TABLE User(
 	userid			VARCHAR(20)			NOT NULL PRIMARY KEY,

@@ -23,11 +23,11 @@
                         <div class="wrap">
 		<div class="life">
 			<p id="life"><label>남은 횟수:</label>&nbsp;&nbsp;${life }</p>
-			<div id="seikai"></div>
+			<div id="A"></div>
 			<span id="e1"> = 정답</span>
-			<div id="word_seikai"></div>
+			<div id="L_A"></div>
 			<span id="e2"> = 자리가 틀림</span>
-			<div id="batsu"></div>
+			<div id="WA"></div>
 			<span id="e3"> = 틀림</span>
 			<%String userid = (String)session.getAttribute("userid"); 
 			if(userid == null){%>
@@ -37,7 +37,9 @@
 			<%} %>
 		</div>
 		<div class="text-area" id="hint">
+		<h2 id="guide">보기</h2>
 		<c:forEach items="${hint }" var="hint">
+			
 			<c:if test="${not empty hint}">
 			<h3 class="hint" hidden>${hint }</h3>
 			</c:if>
@@ -83,13 +85,13 @@
 						var input = document.querySelectorAll('.input');
 						for(let i = 0; i<result.length; i++){
 								if(input[i].value == result[i]){
-									input[i].style.background = 'skyblue';
+									input[i].style.background = '#8CD790';
 									input[i].setAttribute("readonly","true");
 									count++;
 								}else if(result.includes(input[i].value)){
-									input[i].style.background = 'blue';
+									input[i].style.background = '#77AF9C';
 								}else {
-									input[i].style.background = 'gray';
+									input[i].style.background = '#285943';
 							}	
 						}
 						h_count++;
@@ -108,6 +110,7 @@
 							document.querySelector('#Restart').setAttribute("type","submit");
 							document.querySelector("#Hint").setAttribute("type","hidden");
 							document.querySelector("input#Answer").setAttribute("type","hidden");
+							document.querySelector(".life").remove();
 							document.querySelector("#input label").remove();
 							document.querySelector('p').remove();
 							End_game();
@@ -124,6 +127,7 @@
 								document.querySelector('#Restart').setAttribute("type","submit");
 								document.querySelector("#Hint").setAttribute("type","hidden");
 								document.querySelector("input#Answer").setAttribute("type","hidden");
+								document.querySelector(".life").remove();
 								document.querySelector("#input label").remove();
 								document.querySelector('p').remove();
 								End_game();
@@ -172,9 +176,10 @@
 				document.querySelector('button').setAttribute("hidden","true");
 				document.querySelector('#Restart').setAttribute("type","submit");
 				document.querySelector("#Hint").setAttribute("type","hidden");
-				document.querySelector("input#Answer").setAttribute("type","hidden");
+				document.querySelector("input#Answer").setAttribute("type","submit");
 				document.querySelector("#input").remove();
 				document.querySelector('.life p#life').remove();
+				document.querySelector(".life").remove();
 				document.querySelector('p').remove();
 			}
 	</script>
