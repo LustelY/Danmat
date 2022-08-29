@@ -21,7 +21,7 @@
 	<% }else if(result == 3 ) {%>
 		<div class="gameOver"><h1>GAME OVER</h1><h2>이미 사용한 단어예요!</h2></h2><a href="game">넘어가기</a><a href="wordRelay">새로하기</a></div>
 	<% }else if(result == 4 ) {%>
-		<div class="gameOver"><h1>Wait..!</h1><h2>컴퓨터가 사용할 단어가 없어요! 안타깝지만 재시작 하셔야 합니다.</h2><a href="wordRelay">새로하기</a></div>
+		<div class="gameOver"><h1>Wait..!</h1><h2>컴퓨터가 사용할 단어가 없어요! 안타깝지만 재시작 하셔야 합니다.</h2><a href="wordRelay">이어하기</a></div>
 		<% }else if(result == 0){ %>
 		<c:forEach var="answer" items="${answer }">
 		<div class="word-box">

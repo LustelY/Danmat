@@ -54,7 +54,7 @@
       </div>
         <div class="input-wrap">       
          <input id="input_text" class="input_text input-text" placeholder="단어를 입력하세요." autofocus="autofocus" min="1" onKeypress="javascript:if(event.keyCode==13){document.getElementById('button').click()}"/>
-         <input type="button" value="입력하기" id="button" >
+         <input type="button" value="입력하기" id="button" style="position: absolute; bottom: -500px;" >
       </div>
       <script>
   	$(function () {
