@@ -89,7 +89,7 @@
             </div>
             <div class="card">
               <div>
-                <div class="numbers">24</div>
+                <div class="numbers">${new_board }</div>
                 <div class="cardName">새 글</div>
               </div>
               <div class="iconBx">
@@ -124,42 +124,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>게시판</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
+                <c:forEach items="${board_list }" var="board" begin="1" end="5" step="1">
+                <tr>
+                    <td>${board.board_idx }</td>
+                    <td>${board.title }</td>
+                    <td>${board.createDate }</td>
+                    <form method="Get" action="/Danmat/manager/delete_Board">
+                   <input type="hidden" name ="board_idx" value="${board.board_idx }"/>
+                   <td><input type="submit" value="삭제"></td>
+                   </form>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>업데이트</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>기다리는중</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
-                  </tr>
-                                    <tr>
-                    <td>4</td>
-                    <td>기다리는중</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
-                  </tr>
-                                    <tr>
-                    <td>5</td>
-                    <td>기다리는중</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>기다리는중</td>
-                    <td>2022-08-24</td>
-                    <td>업데이트</td>
-                  </tr>
+                </c:forEach>
                 </tbody>
               </table>
             </div>

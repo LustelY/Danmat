@@ -4,18 +4,23 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.cross.Danmat.User.Command.UserCommand;
+import com.cross.Danmat.board.domain.Board;
 
 public interface ManagerService {
 
 	int mglogin(String mgid, String mgpasswd);   
 	
-	UserCommand searchId(String email);
+	List<UserCommand> searchId(String email);
 
-	UserCommand searchEmail(String userid);
+	List<UserCommand> searchEmail(String userid);
 	
 	List<UserCommand> AllUserList();
 	
 	void DeleteUser(String userid);
 	
 	List<UserCommand> getNewUserCount(LocalDate now);
+	
+	public List<Board> BoardList(LocalDate date);
+	
+	void DeleteBoard(String board_idx);
 }

@@ -152,7 +152,7 @@ div #input label {
 		#Exit {
 			width: 150px;
 			height: 50px;
-			margin: 20px 0px;
+			margin: 10px 0px;
 			background: #5DC8CD;
 			box-shadow: 0px 5px 0px 0px #1E8185;
 			position: relative;
@@ -169,7 +169,7 @@ div #input label {
 		#Hint {
 			width: 150px;
 			height: 50px;
-			margin: 20px 0px;
+			margin: 10px 0px;
 			background: #5DC8CD;
 			box-shadow: 0px 5px 0px 0px #1E8185;
 			position: relative;
@@ -186,7 +186,7 @@ div #input label {
 		.btn #Answer {
 			width: 150px;
 			height: 50px;
-			margin: 20px 0px;
+			margin: 10px 0px;
 			background: #5DC8CD;
 			box-shadow: 0px 5px 0px 0px #1E8185;
 			position: relative;
@@ -205,7 +205,7 @@ div #input label {
 			height: 50px;
 			background: #5DC8CD;
 			box-shadow: 0px 5px 0px 0px #1E8185;
-			margin: 20px 0px;
+			margin: 10px 0px;
 			position: relative;
 			left: 46%;
 			font-size:24px;

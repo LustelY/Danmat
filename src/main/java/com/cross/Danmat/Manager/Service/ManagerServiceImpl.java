@@ -8,6 +8,7 @@ import com.cross.Danmat.Manager.Dao.ManagerDao;
 import com.cross.Danmat.Manager.domain.Manager;
 import com.cross.Danmat.User.Command.UserCommand;
 import com.cross.Danmat.User.Dao.UserDao;
+import com.cross.Danmat.board.domain.Board;
 
 public class ManagerServiceImpl implements ManagerService{
 	ManagerDao managerDao;
@@ -38,12 +39,12 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 
 	@Override
-	public UserCommand searchId(String userid) {
+	public List<UserCommand> searchId(String userid) {
 		return managerDao.SearchIdForm(userid);
 	}
 
 	@Override
-	public UserCommand searchEmail(String email) {
+	public List<UserCommand> searchEmail(String email) {
 		return managerDao.SearchEmailForm(email);
 	}
 
@@ -66,5 +67,20 @@ public class ManagerServiceImpl implements ManagerService{
 		String date = now.format(formatter);
 		return managerDao.getNewUserCount(date);
 	}
+	
+	@Override
+	public List<Board> BoardList(LocalDate now) {
+		// TODO Auto-generated method stub
+		return managerDao.newboardList(now);
+	}
+
+
+	@Override
+	public void DeleteBoard(String board_idx) {
+		// TODO Auto-generated method stub
+		managerDao.DeleteBoard(board_idx);
+	}
+	
+	
 
 }

@@ -32,17 +32,14 @@ public class SearchUserController {
 	@PostMapping
 	public String searchId(@RequestParam("type")String type,
 			@RequestParam("Name") String name, Model model) {
-		if(type.equals("Id")) {
-			UserCommand searchId = managerservice.searchId(name);
-			model.addAttribute("searchId",searchId);
-			return "manager/search/searchInfoById";
-		}else if(type.equals("Email")){
-			UserCommand searchemail = managerservice.searchEmail(name);
-			model.addAttribute("searchemail", searchemail);
-			return "manager/search/searchInfoByEmail";
-		}else {
-			return "manager/search/searchUser";
+		if(type.equals("id")) {
+			List<UserCommand> searchId = managerservice.searchId(name);
+			model.addAttribute("user_list",searchId);
+		}else if(type.equals("email")){
+			List<UserCommand> searchemail = managerservice.searchEmail(name);
+			model.addAttribute("user_list", searchemail);
 		}
+			return "manager/search/searchUser";
 	}
 	
 //	@GetMapping   // 유저 이메일 검색

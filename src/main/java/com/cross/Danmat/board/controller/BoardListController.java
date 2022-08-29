@@ -21,12 +21,6 @@ public class BoardListController {
 		@GetMapping
 		public String BoardListForm(Model model) {
 			List<Board> boardList = boardService.boardList();
-//			for (Board board : boardList) {
-//				System.out.println(board.getBoard_idx());
-//				System.out.println(board.getTitle());
-//				System.out.println(board.getCreateDate());
-//				System.out.println(board.getReadCount());
-//			}
 			model.addAttribute("boardList", boardList);
 			context.close();
 			return "board/BoardList";

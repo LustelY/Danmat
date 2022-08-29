@@ -28,7 +28,7 @@ public class BoardDao {
 
 			@Override
 			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Board board = new Board(rs.getInt("board_idx"), rs.getString("userId"), rs.getString("title"),
+				Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
 						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
 						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
 						rs.getLong("replyCount"));
@@ -49,8 +49,10 @@ public class BoardDao {
 		return jdbcTemplate.queryForObject(sql, new RowMapper<Board>() {
 			@Override
 			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Board board = new Board(rs.getInt("board_idx"), rs.getString("userId"), rs.getString("title"),				
-						rs.getString("content"), rs.getDate("createDate"), rs.getLong("readCount"));
+				Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
+						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
+						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
+						rs.getLong("replyCount"));
 				return board;
 			}
 		}, board_idx);

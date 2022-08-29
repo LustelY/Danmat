@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class Board {
 	private int board_idx; // 게시물 번호
+	private String notice;
 	private String userId; // 유저 id
 	private String title; // 게시글 제목
 	private String content; // 게시글 목록
@@ -36,6 +37,8 @@ public class Board {
 		this.createDate = createDate;
 		this.readCount = readCount;
 	}
+	
+	
 	
 	public Board(int board_idx, String title, String content, Date updateDate, Long readCount) {
 		super();

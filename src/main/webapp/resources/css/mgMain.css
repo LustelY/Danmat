@@ -27,6 +27,11 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 .container {

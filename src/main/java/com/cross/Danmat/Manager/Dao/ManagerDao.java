@@ -2,6 +2,7 @@ package com.cross.Danmat.Manager.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -12,6 +13,7 @@ import com.cross.Danmat.Manager.data.ManagerRowMapper;
 import com.cross.Danmat.Manager.data.UserRowMapper;
 import com.cross.Danmat.Manager.domain.Manager;
 import com.cross.Danmat.User.Command.UserCommand;
+import com.cross.Danmat.board.domain.Board;
 
 public class ManagerDao {
 	private JdbcTemplate jdbcTemplate;
@@ -21,15 +23,14 @@ public class ManagerDao {
 	}
 	
 	//아이디로 회원 찾기
-	public UserCommand SearchIdForm(String userid){
-		String sql ="SELECT * FROM User WHERE userid = ? ";
-		return jdbcTemplate.queryForObject(sql, new UserRowMapper(),userid);
+	public List<UserCommand> SearchEmailForm(String email){
+		String sql ="SELECT * FROM User WHERE email = ? ";
+		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+ email +"%");
 	}
 	
-	//이메일로 회원 찾기
-	public UserCommand SearchEmailForm(String email){
-		String sql ="SELECT * FROM User WHERE email = ? ";
-		return jdbcTemplate.queryForObject(sql, new UserRowMapper(),email);
+	public List<UserCommand> SearchIdForm(String userid){
+		String sql ="SELECT * FROM User WHERE userid LIKE ? ";
+		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+ userid+ "%");
 	}
 	
 	//모든 유저 목록
@@ -56,4 +57,26 @@ public class ManagerDao {
 		String sql = "SELECT * FROM user WHERE regdate Like ?";
 		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+date+"%");
 	}
+	
+	//공지사항 목록
+		public List<Board> newboardList(LocalDate date) {
+			String sql = "select * from BOARD where createDate Like ? order by board_idx desc";
+			return jdbcTemplate.query(sql, new RowMapper<Board>() {
+
+				@Override
+				public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
+							rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
+							rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
+							rs.getLong("replyCount"));
+					return board;
+				}
+			}, "%"+date+"%");
+		}
+	
+		//게시글 삭제
+		public void DeleteBoard(String board_idx) {
+			String sql = "DELETE FROM Board WHERE board_idx = ?";
+			jdbcTemplate.update(sql, board_idx);
+		}
 }

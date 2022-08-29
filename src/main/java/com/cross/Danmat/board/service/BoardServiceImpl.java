@@ -52,5 +52,4 @@ public class BoardServiceImpl implements BoardService {
 	public void readCount(int board_idx) {
 		boardDao.readCount(board_idx);		
 	}
-
 }

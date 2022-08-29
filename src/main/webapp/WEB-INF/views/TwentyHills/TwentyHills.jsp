@@ -72,7 +72,6 @@
 		var check = 0;
 		var life = ${life};
 		document.querySelectorAll('.hint')[h_count].removeAttribute("hidden");
-		
 			document.querySelector('button').addEventListener('click',
 					function(){
 						var input = document.querySelectorAll('.input');
@@ -166,12 +165,19 @@
 						input[i].setAttribute("type","hidden");
 					}
 					End_game();
-				})
-				if(life == 0){
-					document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
-					End_game();
-				}
 				});
+				});
+			if(life <= 1){
+				document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+				End_game();
+			}
+			for(let i = 0; i < 5; i++){
+				document.querySelectorAll('input.input')[i].addEventListener('keyup', function(){
+					if(this.value.length == 2){
+						document.querySelectorAll('input.input')[i+1].focus();
+					}
+				});
+				}
 			function End_game(){
 				document.querySelector('button').setAttribute("hidden","true");
 				document.querySelector('#Restart').setAttribute("type","submit");
