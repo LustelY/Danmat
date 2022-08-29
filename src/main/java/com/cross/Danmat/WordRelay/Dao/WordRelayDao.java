@@ -17,13 +17,13 @@ import com.cross.Danmat.WordRelay.Domain.Word;
 public class WordRelayDao {
 	JdbcTemplate jdbcTemplate;
 
-	
+	//============================================ JDBC data ================================================
 	public WordRelayDao(DataSource datasource) {
 		super();
 		jdbcTemplate = new JdbcTemplate(datasource);
 	}
 	
-	
+	//============================================ 모든 단어 ================================================
 	public List<Word> findAll(){
 		String sql = "SELECT * FROM word";
 		
@@ -37,7 +37,7 @@ public class WordRelayDao {
 		});
 	}
 	
-	
+	//============================================ 무작위 단어 출력 ================================================
 	public List<Word> randomWord(){
 		String sql = "SELECT * FROM word  ORDER BY RAND() limit 1;";
 		
@@ -51,6 +51,7 @@ public class WordRelayDao {
 		});
 	}
 		
+	//============================================ 입력단어 DB유무 체크  ================================================
 	public int checkWord(String word) {
 		try {
 			String sql = "SELECT * FROM word WHERE word = ? ORDER BY RAND() limit 1 ";
@@ -70,8 +71,7 @@ public class WordRelayDao {
 			return 1;
 		}
 	}
-	
-	
+	//============================================ 입력값 끝말에 맞는 랜덤 단어 추출 ================================================
 	public List<Word> randomSplWord(String word){
 		String sql = "SELECT * FROM word WHERE word LIKE ? ORDER BY RAND() limit 1";
 		try {
@@ -88,13 +88,14 @@ public class WordRelayDao {
 		}
 	}
 	
+	//============================================ 사용단어 저장 ================================================
 	public void isuse(String word) {
 			String sql = "INSERT INTO isuse (usedWord) VALUES (?)";
 			jdbcTemplate.update(sql,word);
 			System.out.println("word는 사용단어에 추가되었습니다.");
 		}
 	
-	
+	//============================================ 사용단어 체크  ================================================
 	public int usedWord(String word) {
 		try {
 			String sql = "SELECT * FROM isuse WHERE usedWord = ? ";
@@ -115,25 +116,28 @@ public class WordRelayDao {
 		}
 	}
 	
+	//============================================ 사용단어 초기화 ================================================
 	public void delete () {
 		String sql = "TRUNCATE isuse";
 		jdbcTemplate.update(sql);
 		System.out.println("사용단어가 초기화 되었습니다.");
 	}
 	
+	//============================================ 제시어 ================================================
 	public void answer(String word) {
 		String sql = "INSERT INTO answer (answerWord) VALUES (?)";
 		System.out.println("answer 단어 등록");
 		jdbcTemplate.update(sql,word);
 	}
 	
+	//============================================ 사용 제시어 삭제 ================================================
 	public void delete2 () {
 		String sql = "TRUNCATE answer";
 		jdbcTemplate.update(sql);
 		System.out.println("answer 초기화 되었습니다.");
 	}
 	
-	
+	//============================================ 출력 단어 체크  ================================================
 	public List<WordCommand> findAnswer(){
 		String sql = "SELECT * FROM answer";
 		return jdbcTemplate.query(sql, new RowMapper<WordCommand>() {
@@ -146,11 +150,13 @@ public class WordRelayDao {
 		});
 	}
 	
+	//============================================ 점수 ================================================
 	public void point(int point){
 		String sql = "INSERT INTO point (point) VALUES(?)";
 		jdbcTemplate.update(sql, point);
 	}
 	
+	//============================================ 점수 등록================================================
 	public List<PointCommand> addPoint() {
 		String sql = "Select sum(point) from point";
 		return jdbcTemplate.query(sql, new RowMapper<PointCommand>() {
@@ -163,12 +169,14 @@ public class WordRelayDao {
 		});
 	}
 	
+	//============================================ 점수 초기화 ================================================
 	public void delete3 () {
 		String sql = "TRUNCATE point";
 		jdbcTemplate.update(sql);
 		System.out.println("point 초기화 되었습니다.");
 	}
 	
+	//============================================ 사용단어 추출 ================================================
 	public List<UsedCommand> findUsed(){
 		String sql = "SELECT * FROM isuse";
 		

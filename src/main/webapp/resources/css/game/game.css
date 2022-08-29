@@ -230,7 +230,7 @@ body.hidden {
   animation-iteration-count: infinite;
 }
 
-.second .img {
+.second .img, .third .img {
   position: absolute;
   transform: rotate(10deg);
   background-image: url("../../images/wordRelay/KakaoTalk_20220823_010002606.png");
@@ -248,6 +248,12 @@ body.hidden {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-fill-mode: both;
+}
+
+.third .img {
+	background-image: url("../../images/TwentyHills/—Pngtree—little frog pixel painting illustration_4764681.png");
+	opacity: .7;
+	transform: rotate(0);
 }
 
 .second .start-btn > a{

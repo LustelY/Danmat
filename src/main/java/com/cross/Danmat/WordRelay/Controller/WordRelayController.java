@@ -35,7 +35,7 @@ public class WordRelayController {
 		System.out.println("데이터삭제");
 		wordRelayService.delete2();
 		System.out.println("데이터삭제");
-		if(count >= 0) {
+		if(count >= 0) { //컴퓨터의 오류로 재시작할때 점수초기화 방지를 위해
 			count = 0;
 		}else {
 			wordRelayService.delete3();
