@@ -69,6 +69,17 @@ body {
   background: #F3F1F5;
   font-family: 'BinggraeSamanco';
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 1s 1s
+}
+
+body.reveal {
+    opacity: 1;
+    overflow-y: auto
+}
+
+body.hidden {
+    opacity: 0
 }
 
 /* header */

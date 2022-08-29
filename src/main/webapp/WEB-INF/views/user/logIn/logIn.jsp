@@ -11,6 +11,16 @@
 <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	    <% 
+	    String userid = (String)session.getAttribute("userid");
+		if (userid != null ){
+			response.sendRedirect("main");
+			return;
+		}
+	    %>
+<%
+out.println(request.getHeader("referer"));
+%>
   	<form action="logIn" method="POST">
   <div class="wrap">
        <div class="login">

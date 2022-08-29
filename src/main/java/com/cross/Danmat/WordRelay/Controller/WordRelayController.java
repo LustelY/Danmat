@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cross.Danmat.Config.DataSourceConfig;
 import com.cross.Danmat.WordRelay.Command.PointCommand;
+import com.cross.Danmat.WordRelay.Command.UsedCommand;
 import com.cross.Danmat.WordRelay.Domain.Word;
 import com.cross.Danmat.WordRelay.Service.WordRelayServiceImpl;
 
@@ -31,13 +32,14 @@ public class WordRelayController {
 		random = randomWord.get(0).getWord();
 		
 		wordRelayService.delete(); //사용된 단어 DB 데이터 삭제
+		System.out.println("데이터삭제");
 		wordRelayService.delete2();
+		System.out.println("데이터삭제");
 		if(count >= 0) {
-			System.out.println("데이터 보존");
 			count = 0;
 		}else {
 			wordRelayService.delete3();
-			System.out.println("데이터 삭제");
+			System.out.println("데이터삭제");
 		}
 		return "wordRelay/wordRelay";
 	}
@@ -46,7 +48,7 @@ public class WordRelayController {
 	@PostMapping
 	public String wordRelayAjax(@ModelAttribute("word") Word word, Model model,HttpServletRequest request) {
 		int result = 0; // 1 = 마지막글씨와 맞지 않을때  2 = DB에 없는단어  3 = 사용한 단어 4 = 승리
-		List<PointCommand> point = wordRelayService.addPoint();	
+		List<PointCommand> point = wordRelayService.addPoint();
 		model.addAttribute("point",point);
 		model.addAttribute("point",point);
  		model.addAttribute("result",result);
@@ -57,6 +59,8 @@ public class WordRelayController {
 		
 		int usedWord = wordRelayService.usedWord(input_text);
 		wordRelayService.isuse(input_text); //사용 단어 등록
+		List<UsedCommand> used = wordRelayService.findUsed();
+		model.addAttribute("used",used);
 		
 		int checkWord = wordRelayService.checkWord(input_text); //DB에 등록된 단어 확인
 		

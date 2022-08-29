@@ -10,7 +10,7 @@
   <title>game</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="<c:url value='/resources/css/common/initial.css'/>">
-   <link rel="stylesheet" href="<c:url value='/resources/css/game/game.css'/>">
+  <link rel="stylesheet" href="<c:url value='/resources/css/game/game.css'/>">
   <style>
        html,
        body {
@@ -80,7 +80,7 @@
         <h1><a href="logIn">로그인</a></h1>
         <% }else { %>     
         	<h1><%= userid %>님</h1>
-            <h1><a href="logOut">로그인</a></h1>
+            <h1><a href="logOut">로그아웃</a></h1>
        <% } %>
 
       </div>
@@ -159,6 +159,42 @@
      }
       }
     });
+	
+	function isSameAsLocation(uriString) {
+	    const uri = new URL(uriString);
+
+	    return (
+	        uri.origin === window.location.origin &&
+	        uri.pathname === window.location.pathname
+	    );
+	}
+
+	function pageTransition(nodeList) {
+	    nodeList.forEach((node) => {
+	        if (!(node instanceof HTMLAnchorElement)) return;
+
+	        const { href } = node;
+
+	        if (!href || node.target === "_blank" || isSameAsLocation(href)) return;
+
+	        node.addEventListener("click", (event) => {
+	            event.preventDefault();
+
+	            document.body.addEventListener(
+	                "transitionend",
+	                () => {
+	                    window.location.href = href;
+	                },
+	                { passive: true, once: true }
+	            );
+	            document.body.classList.add("hidden");
+	        });
+	    });
+	}
+	
+	pageTransition(document.querySelectorAll("a"))
+	
+    document.body.classList.add("reveal");
   </script>
 </body>
 

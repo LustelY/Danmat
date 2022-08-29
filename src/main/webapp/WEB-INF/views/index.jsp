@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      <footer>
+      <footer style="left: calc(50% - 191px );">
         <div class="inner">
           <div class="fbox">
             <ul>
@@ -117,7 +117,6 @@
       </footer>
     </div>
   </div>
-
 </body>
 
 </html>

@@ -11,6 +11,13 @@
 <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+		    <% 
+	    String userid = (String)session.getAttribute("userid");
+		if (userid != null ){
+			response.sendRedirect("main");
+			return;
+		}
+	    %>
 	<form action="findPassword" method="POST">
   <div class="wrap">
        <div class="login">

@@ -23,6 +23,16 @@
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'BinggraeSamanco';
+  src: url("../../font/BinggraeSamanco.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Binggrae-Bold';
+  src: url("../../font/BinggraeSamanco-Bold.otf") format("truetype");
+}
+
 html,body { height: 100%; }
 ul,ol { list-style: none; }
 a { color: #666666; }
@@ -30,29 +40,120 @@ a { color: #666666; }
 li { position: relative; }
 
 body {
-  font-family: 'HBIOS-SYS';
-  /* background: linear-gradient(180deg,#c2bde3 ,#fbeef0 65%); */
-  background: #4733ff;
-  /* background-image: url("../../images/wordRelay/3137882.jpg");
+  position: relative;
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'BinggraeSamanco';
+  background: #A6D1E6;
+  color: #444;
+  overflow: hidden;
+    opacity: 0;
+  transition: opacity 1s 1s
+}
+
+body.reveal {
+    opacity: 1;
+    overflow-y: auto
+}
+
+body.hidden {
+    opacity: 0
+}
+
+
+.toplogo {
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 50px 0 0 140px;
+}
+
+.logoImg {
+  background-image: url("../../images/logo_transparent.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%; */
+  background-size: contain;
+  position: absolute;
+  top: 15px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  opacity: .8;
 }
+
+.logo-title {
+  font-family: 'BinggraeSamanco';
+  padding-left: 50px;
+  font-size: 32px;
+  font-weight: 100;
+}
+
+/* box btn wrap */
+
+.btn-1 , .btn-2 {
+  position: absolute;
+  top: 50px;
+  right: 300px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 25px;
+  text-align: center;
+  background: #bf5eae;
+  font-size: 20px;
+  transition: .5s;
+  z-index: 999;
+}
+
+.btn-2 {
+  right: 150px;
+}
+
+.btn-1:hover > a , .btn-2:hover > a  {
+  color: black;
+  transition: .5s;
+}
+
+.btn-1 a , .btn-2 a {
+  display: block;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+}
+
+.point-box {
+  font-family: 'HBIOS-SYS';
+  color: #444;
+  position: absolute;
+  top: 200px;
+  width: 150px;
+  height: 50px;
+}
+
+.point-box h1 {
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+}
+
+/* header */
 
 .header {
   position: relative;
 }
 
 .title {
+  font-family: 'BinggraeSamanco';
   display: block;
   text-align: center;
   width: 100%;
-  font-size: 100px;
-  padding-top: 100px;
+  font-size: 80px;
+  padding-top: 150px;
   color: #fff;
 }
 
+/* main */
 .user-wrap {
   position: relative;
   display: flex;
@@ -61,23 +162,80 @@ body {
   padding-top: 150px;
 }
 
+.def-box {
+  position: absolute;
+  top: -250%;
+  left: -250%;
+  width: 250px;
+  border-radius: 20px;
+  background: rgba(117, 170, 255 , 0.8);
+  box-shadow: 0 7px 20px rgb(0 0 0 / 10%);
+  padding: 20px;
+}
+
+.def-box h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.def-box p {
+  font-size: 25px;
+}
+
+.used-box {
+  position: absolute;
+  top: -250%;
+  right: -250%;
+  width: 250px;
+  border-radius: 20px;
+  background: rgba(117, 170, 255 , 0.8);
+  box-shadow: 0 7px 20px rgb(0 0 0 / 10%);
+  padding: 20px;
+}
+
+.used-box h1 {
+  font-family: 'HBIOS-SYS';
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.used-box p {
+  font-size: 20px;
+}
+
 .first-computer , .second-user {
   position: relative;
 }
 
 .first-computer {
-  padding-left: 20%;
+  padding-left: 25%;
 }
+
+.first-computer .user-img {
+  background-image: url("../../images/wordRelay/—Pngtree—pixel%20tv%20drama%20illustration_4650574.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  animation-name: move;
+  animation-duration: 3s;
+  animation-delay: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
 .second-user {
-  padding-right: 20%;
+  padding-right: 25%;
 }
+
 .user-img {
   width: 250px;
   height: 250px;
-  animation-name: move;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  border-radius: 50%;
+  /* box-shadow: 0 7px 20px rgb(0 0 0 / 10%);
+  background: #F3F1F5; */
 }
 
 .second-user .user-img {
@@ -94,29 +252,14 @@ body {
   animation-fill-mode: both;
 }
 
-.user-img{
-  animation-delay: 1s;
-}
-
 .word {
   width: 250px;
   height: 50px;
-  background: #f1f1f1;
-  margin-top: 50px;
+  margin-top: 20px;
   border-radius: 30px;
   line-height: 50px;
   text-align: center;
-  font-size: 24px;
-}
-
-.heart-img {
-  width: 5%;
-  animation-name: bounce;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-fill-mode: both;
+  font-size: 40px;
 }
 
 .input-wrap{
@@ -125,57 +268,71 @@ body {
   text-align: center;
 }
 
-.input-text {
+.word-box {
   font-family: 'HBIOS-SYS';
+  width: 300px;
+  height: 80px;
+  border-radius: 20px;
+  line-height: 80px;
+  font-size: 50px;
+  border: 3px solid #444;
+  background: #fff;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 10%);
+  text-align: center;
+  color: black;
+}
+
+
+/* input */
+.input-text {
+  font-family: 'BinggraeSamanco';
   width: 250px;
   height: 50px;
-  border: 1px solid #f1f1f1;
+  border: 3px solid #444;
   border-radius: 30px;
   text-align: center;
   font-size: 24px;
+  background: #fff;
+  box-shadow: 0 7px 20px rgb(0 0 0 / 10%);
 }
 
-.black {
-  position: absolute;
-  z-index: 500;
-  width: 100%;
-  height: 100%;
-  background: black;
-  animation-name: move2;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
+@keyframes move {
+0%{
+transform: translateY(0);
+}
+5%{
+  transform: translateY(-15px);
+}
+10%{
+  transform: translateY(0);
+}
+15%{
+  transform: translateY(-15px);
+}
+20%{
+  transform: translateY(0);
+}
 }
 
-.userWord , .computerWord {
-	display: inline-block;
-	width: 200px;
-	font-size: 50px;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.userWord {
-	position: absolute;
-    right: 28%;
-    top: 125%;
-}
-
-.computerWord {
-	position: absolute;
-    left: 28%;
-    top: 125%;
-}
+/* ajax */
 
 .gameOver {
-	position: absolute;
-	left: calc(50% - 450px);
-	top: 150%;
-	z-index: 100;
-	animation-name: move3;
+	font-family: 'HBIOS-SYS';
+	 position: relative;
+    z-index: 999;
+    height: 3000px;
+    width: 100vw;
+    top: -56px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+	animation-name: move2;
  	 animation-duration: 1.5s;
  	 animation-timing-function: ease-in-out;
  	 animation-fill-mode: both;
+ 	 background: rgba(0, 0, 0, 0.3);
+ 	 color: black;
 }
 
 .gameOver > h1 {
@@ -183,6 +340,11 @@ body {
 	width: 100%;
 	text-align: center;
 	font-size: 200px;
+}
+
+.gameOver > h2 {
+	text-align: center;
+	font-size: 25px;
 }
 
 .gameOver > a {
@@ -194,57 +356,14 @@ body {
 	height: 50px;
 	line-height: 50px;
 	border-radius: 20px;
-	font-size: 18px;
-}
-
-@keyframes bounce {
-  0%{
-    transform: scale(.7);
-  }
-  25%{
-    transform: scale(.3);
-  }
-  50%{
-    transform: scale(.5);
-  }
-  75%{
-    transform: scale(.3);
-  }
-  100%{
-    transform: scale(.7);
-  }
-}
-
-  
-  @keyframes move {
-  0%{
-	transform: translateY(0);
-  }
-  5%{
-    transform: translateY(-15px);
-  }
-  10%{
-    transform: translateY(0);
-  }
-  15%{
-    transform: translateY(-15px);
-  }
-  20%{
-    transform: translateY(0);
-  }
+	font-size: 25px;
+	margin-top: 20px;
+	line-height: 50px;
+	background: #bf5eae;
+	color: #fff;
 }
 
 @keyframes move2 {
-0%{
-  height: 100%;
-}40%{
-	height: 100%;
-}100% {
-  height: 0;
-}
-}
-
-@keyframes move3 {
 0%{
   margin-top: -100%;
 }50% {

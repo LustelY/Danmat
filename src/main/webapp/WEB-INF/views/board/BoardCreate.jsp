@@ -67,7 +67,7 @@ if (userid == null) {
 					<a href="main"><span style="font-weight: bold;">danmat</span></a>
 			</div>
 			<nav class="navMenu">
-				<a class="p-2" href="../notice">소식</a>
+			<a class="p-2" href="game">게임</a>
 				<a class="p-2" href="../ranking">랭킹</a>
 				<a class="p-2" href="../board">게시판</a>
 				<%
@@ -128,23 +128,6 @@ if (userid == null) {
 					</div>
 				</div>
 			</div>
-			<footer>
-				<div class="inner">
-					<div class="fbox">
-						<ul>
-							<li>이용약관</li>
-							<li>개인정보처리방침</li>
-							<li>책임의 한계와 법적고지</li>
-							<li>회원정보 고객센터</li>
-						</ul>
-					</div>
-					<div class="fbox_bottom">
-						<h2>단어의맛&copy;</h2>
-						<div class="copy">Copyright danmat Corp. All Rights
-							Reserved.</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
 

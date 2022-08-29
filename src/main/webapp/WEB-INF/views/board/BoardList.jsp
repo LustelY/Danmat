@@ -45,11 +45,10 @@
 	<div class="bigWrap">
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-1 mb-1">
 			<div class="my-0 mr-md-auto font-weight-normal topLogo">
-				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span style="font-weight: bold;">danmat</span></a>
+				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span>danmat</span></a>
 			</div>
 			<nav class="navMenu">
 				<a class="p-2" href="game">게임</a>
-				<a class="p-2" href="notice">소식</a>
 				<a class="p-2" href="ranking">랭킹</a>
 				<a class="p-2" href="#">게시판</a>
 				<%
@@ -138,24 +137,6 @@
 					</section>
 				</div>
 			</div>
-			
-			<footer>
-				<div class="inner">
-					<div class="fbox">
-						<ul>
-							<li>이용약관</li>
-							<li>개인정보처리방침</li>
-							<li>책임의 한계와 법적고지</li>
-							<li>회원정보 고객센터</li>
-						</ul>
-					</div>
-					<div class="fbox_bottom">
-						<h2>단어의맛&copy;</h2>
-						<div class="copy">Copyright danmat Corp. All Rights
-							Reserved.</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
 	<script>

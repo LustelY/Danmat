@@ -10,9 +10,7 @@ public class WordRelayDaoTest {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DataSourceConfig.class);
 		WordRelayDao dao = context.getBean("wordRelayDao", WordRelayDao.class);
 		
-		dao.point(30);
-		dao.delete3();
-		System.out.println(dao.addPoint().get(0).getPoint());
+		System.out.println(dao.findUsed());
 	}
 }
 

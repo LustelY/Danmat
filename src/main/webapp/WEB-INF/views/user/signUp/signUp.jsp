@@ -14,7 +14,13 @@
   <link rel="stylesheet" href="<c:url value='/resources/css/user/signUp.css'/>" >
     <script type="text/javascript" src="./js/prefix.js"></script>
   </head>
-
+			    <% 
+	    String userid = (String)session.getAttribute("userid");
+		if (userid != null ){
+			response.sendRedirect("main");
+			return;
+		}
+	    %>
   <body>
     <div id="wrap">
       <div class="title">

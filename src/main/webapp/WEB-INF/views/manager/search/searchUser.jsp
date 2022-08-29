@@ -12,6 +12,11 @@
 
 <body>
 <body>
+    <% String userid = (String)session.getAttribute("userid");
+	if (userid == null || !userid.equals("admin")){
+		response.sendRedirect("http://localhost:8080/Danmat/main");
+		return;
+	}%>
     <div class="container">
       <div class="navigation">
         <ul>

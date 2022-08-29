@@ -3,6 +3,7 @@ package com.cross.Danmat.WordRelay.Service;
 import java.util.List;
 
 import com.cross.Danmat.WordRelay.Command.PointCommand;
+import com.cross.Danmat.WordRelay.Command.UsedCommand;
 import com.cross.Danmat.WordRelay.Command.WordCommand;
 import com.cross.Danmat.WordRelay.Domain.Word;
 
@@ -33,5 +34,7 @@ public interface WordRelayService {
 	public List<PointCommand> addPoint();
 	
 	public void delete3 ();
+	
+	public List<UsedCommand> findUsed();
 	
 }

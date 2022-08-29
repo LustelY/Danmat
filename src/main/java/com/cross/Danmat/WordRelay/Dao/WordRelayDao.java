@@ -5,13 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.cross.Danmat.User.Command.UserCommand;
 import com.cross.Danmat.WordRelay.Command.PointCommand;
+import com.cross.Danmat.WordRelay.Command.UsedCommand;
 import com.cross.Danmat.WordRelay.Command.WordCommand;
 import com.cross.Danmat.WordRelay.Domain.Word;
 
@@ -168,6 +167,19 @@ public class WordRelayDao {
 		String sql = "TRUNCATE point";
 		jdbcTemplate.update(sql);
 		System.out.println("point 초기화 되었습니다.");
+	}
+	
+	public List<UsedCommand> findUsed(){
+		String sql = "SELECT * FROM isuse";
+		
+		return jdbcTemplate.query(sql, new RowMapper<UsedCommand>() {
+
+			@Override
+			public UsedCommand mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UsedCommand word = new UsedCommand(rs.getString("usedWord"));
+				return word;
+			}
+		});
 	}
 	
 }	

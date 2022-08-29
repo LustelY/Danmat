@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="./css/font.css" />
   </head>
   <body>
+      <% String userid = (String)session.getAttribute("userid");
+	if (userid == null || !userid.equals("admin")){
+		response.sendRedirect("main");
+		return;
+	}%>
     <div class="container">
       <div class="navigation">
         <ul>

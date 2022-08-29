@@ -16,7 +16,6 @@
 		</h1>
 		<nav class="links">
 			<ul>
-				<li><a href="notice">소식</a></li>
 				<li><a class="p-2" href="../ranking">랭킹</a></li>
 				<li><a class="p-2" href="../board">게시판</a></li>
 				<%
@@ -88,17 +87,5 @@
 						}
 						%>
 	</div>
-	<!-- Footer -->
-	<section id="footer">
-		<div class="pagination-wrapper clearfix">
-			<ul class="pagination float--right" id="pages">
-				<ul class="icons">
-					<li><span class="label"
-						style="margin-left: 30px; font-size: 42px; color: #6f61c9;">danmat</span></li>
-				</ul>
-			</ul>
-		</div>
-		<p class="copyright">Copyright danmat Corp. All Rights Reserved.</p>
-	</section>
 </body>
 </html>
