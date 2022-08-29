@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,10 +18,13 @@ public class LogOutController {
 	
 	//============================================ 로그아웃 ================================================
 	@GetMapping
-	public String logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String logout(Model model,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false);
 		session.invalidate();
-		return "user/logIn/logIn";
 		
+		int logOut = 1;
+		model.addAttribute("logOut",logOut);
+		
+		return "user/logIn/logIn";
 	}
 }

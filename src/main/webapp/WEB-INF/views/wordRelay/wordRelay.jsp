@@ -18,6 +18,7 @@
     <script src="<c:url value='/resources/js/hangul-tools.js'/>"></script>
   </head>
   <body>
+  <h1 class="ex">제시어 끝말에 맞는 단어를 입력해주세요.</h1>
     <div class="toplogo">
       <div class="logoImg"></div>
       <h2 class="logo-title"><a href="main">danmat <em style="font-size:12px;">단맛</em></a></h2>
@@ -29,7 +30,7 @@
       <a href="game" class="second-btn">게임선택</a>
     </div>
     <div class="header">
-        <div class="title">Word Realy</div>
+        <div class="title">Word Relay</div>
       </div>
       <div class="user-wrap">
         <!-- <div class="point-box">
@@ -40,6 +41,7 @@
           <div id="first-word" class="word">computer</div>
         </div>
         <div id="ajaxReturn" style="position: absolute;"></div>
+        <h1 class="suggestion">제시어</h1>
         <div class="word-box">
         ${randomWord }
         </div>
@@ -57,14 +59,14 @@
          <input type="button" value="입력하기" id="button" style="position: absolute; bottom: -500px;" >
       </div>
       <script>
-  	$(function () {
+  	$(function () { //해당 아이디를 가진 태그에 엔터를 누르면 버튼이 클릭이 되도록 설정
 	    $("#input_text").keyup(function(event) {
 	        if (event.which === 13) {
 	            $("#button").click();
 	        }
 	    });
 		
-	    $("#button").click(function () {
+	    $("#button").click(function () { //버튼이 클릭되면 아래 ajax와 비동기 통신을 하도록 설정
 	        $.ajax({    
 	            type : "post",
 	            url : "http://localhost:8080/Danmat/wordRelay",

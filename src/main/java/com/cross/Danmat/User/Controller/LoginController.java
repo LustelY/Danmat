@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cross.Danmat.Config.DataSourceConfig;
 import com.cross.Danmat.User.Command.UserCommand;
@@ -32,7 +33,8 @@ public class LoginController {
 	
 	//============================================ 로그인 ================================================
 	@PostMapping
-	public String login(@ModelAttribute("user") UserCommand user, Model model,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String login(@ModelAttribute("user") UserCommand user, Model model,
+			HttpServletRequest request, HttpServletResponse response,@RequestParam("url") String url) throws IOException {
 		
 		int result = userService.login(user.getUserid(), user.getPasswd());
 		model.addAttribute("result", result);
@@ -44,10 +46,11 @@ public class LoginController {
 		}if(user.getPasswd() == null || user.getPasswd().length() == 0 ) {
 			return "user/signUp/error_signUp";
 		}
-
+		
 		HttpSession session = request.getSession(true); 
 		session.setAttribute("userid", user.getUserid());
 		context.close();
-		return "index";
+		
+		return "redirect:"+url;
 	}
 }

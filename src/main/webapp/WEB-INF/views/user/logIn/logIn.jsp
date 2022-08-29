@@ -11,6 +11,11 @@
 <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<c:if test="${logOut eq 1 }">
+<%
+response.sendRedirect(request.getHeader("referer"));
+%>
+</c:if>
 	    <% 
 	    String userid = (String)session.getAttribute("userid");
 		if (userid != null ){
@@ -19,9 +24,10 @@
 		}
 	    %>
 <%
-out.println(request.getHeader("referer"));
-%>
+String url = request.getHeader("referer");
+%> 
   	<form action="logIn" method="POST">
+  	<input type="hidden" name="url" value="<%=url %>">
   <div class="wrap">
        <div class="login">
            <h2>Login</h2>

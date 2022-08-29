@@ -69,6 +69,23 @@ body.hidden {
   padding: 50px 0 0 140px;
 }
 
+.ex {
+	font-weight: 100;
+	font-family: 'BinggraeSamanco';
+	line-height: 80px;
+    text-align: center;
+    user-select: auto;
+    position: absolute;
+    bottom: -30px;
+    width: 350px;
+    background: rgba(0,0,0, .4);
+    font-size: 25px;
+    left: calc(50% - 175px);
+    height: 100px;
+    color: #fff;
+    border-radius: 30px;
+    }
+
 .logoImg {
   background-image: url("../../images/logo_transparent.png");
   background-position: center;
@@ -266,6 +283,13 @@ body.hidden {
   position: relative;
   margin-top: 100px;
   text-align: center;
+}
+
+.suggestion {
+	font-family: 'HBIOS-SYS';
+	position: absolute;
+	bottom: 220px;
+	font-size: 30px; 
 }
 
 .word-box {
