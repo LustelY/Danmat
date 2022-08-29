@@ -5,68 +5,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Twenty Hills</title>
-<link rel="stylesheet" href="<c:url value='/resources/css/common/initial.min.css'/>">
+<title>스무고개</title>
 <link rel="stylesheet" type="text/css" href="/Danmat/resources/css/TwentyHills/TwentyHills.css"/>
+<link rel="stylesheet" type="text/css" href="/Danmat/resources/css/wordRelay.css"/>
 </head> 
 <body>
-    <div class="def">
-    <span>설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다</span>
-    <p>게임설명</p>
-    </div>
-    <div class="toplogo" style="z-index: 999;">
-      <div class="logoImg"></div>
-      <h2 class="logo-title"><a href="main">danmat <em style="font-size:12px;">단맛</em></a></h2>
-    </div>
-    <div class="btn-1">
-      <a href="TwentyHills" class="first-btn">재시작</a>
-    </div>
-    <div class="btn-2">
-      <a href="http://localhost:8080/Danmat/game" class="second-btn">게임선택</a>
-    </div>
-    <div class="header">
-        <div class="title">Twenty Hills</div>
-      </div>
-        <div class="main-wrap">
-          <div class="wrap">
-            <div class="game">
-              <div class="userid">
-                <div style="width: 220px;">남은횟수 : ${life }</div>
-                <%String userid = (String)session.getAttribute("userid"); 
-				if(userid == null){%>
-				<div style="width: 220px;">guest</div>
-				<%} else { %>
-				<div style="width: 220px;"><%=userid %></div>
-				<%} %>               
-              </div>
-              
-         	<c:forEach items="${hint }" var="hint">		
+<canvas id="demo-canvas"></canvas>
+<div class="pageloader"></div>
+        <div class="infraloader is-active"></div>        
+        <!-- Hero and nav -->
+        <div id="large-header" class="hero is-slanted is-relative is-gradient is-fullheight is-halfed-mobile">
+        
+          <div id="main-hero" class="hero-body">
+                <div id="main-landing-title" class="container has-text-centered">
+                    <div class="columns">
+                        <div class="column is-6 is-offset-3 has-text-centered">
+                        <div class="wrap">
+		<div class="life">
+			<p id="life"><label>남은 횟수:</label>&nbsp;&nbsp;${life }</p>
+			<div id="A"></div>
+			<span id="e1"> = 정답</span>
+			<div id="L_A"></div>
+			<span id="e2"> = 자리가 틀림</span>
+			<div id="WA"></div>
+			<span id="e3"> = 틀림</span>
+			<%String userid = (String)session.getAttribute("userid"); 
+			if(userid == null){%>
+			<p id="user"> 유저 ID: guest </p>
+			<%} else { %>
+			<p id="user"> 유저 ID: <%=userid %></p>
+			<%} %>
+		</div>
+		<div class="text-area" id="hint">
+		<h2 id="guide">보기</h2>
+		<c:forEach items="${hint }" var="hint">
+			
 			<c:if test="${not empty hint}">
 			<h3 class="hint" hidden>${hint }</h3>
 			</c:if>
-			</c:forEach>
-			<h3 class="hint" hidden>힌트가 없습니다.</h3>
-			
-				${input }
-				
-            </div>
-
-          </div>
-          <div class="img"></div>
+		</c:forEach>
+		<h3 class="hint" hidden>힌트가 없습니다.</h3>
+		</div>
+		${input }
+		<div class="btn">
+		<button>입력</button>
+		<input type="submit" id="Hint" value="힌트 보기"/>
+		<input type="hidden" id="Answer" value="정답 보기"/>
+		</div>
+		<form method="get" action="../Game/TwentyHills">
+		<input type="hidden" id="Restart" value="다시하기"/>
+		</form>
+		<form method="get" action="../game">
+		<input type="submit" id="Exit" value="종료"/>
+		</form>
+	</div>             
+    </div>
+    </div>
+    </div>
+    </div>
         </div>
-            <div class="btn">
-				<button>입력</button>
-				<input type="submit" id="Hint" value="힌트 보기"/>
-				<input type="hidden" id="Answer" value="정답 보기"/>
-			</div>
-				
-			<form method="get" action="../Game/TwentyHills">
-				<input type="hidden" id="Restart" value="다시하기"/>
-			</form>
-				
-			<form method="get" action="../game">
-				<input type="submit" id="Exit" value="종료"/>
-			</form>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="/Danmat/resources/js/animation.js"></script>
 	<script>
 		var result = `${word }`;

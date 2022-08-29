@@ -59,7 +59,7 @@
          <input type="button" value="입력하기" id="button" style="position: absolute; bottom: -500px;" >
       </div>
       <script>
-  	$(function () { //해당 아이디를 가진 태그에 엔터를 누르면 버튼이 클릭이 되도록 설정
+		$(function () { //해당 아이디를 가진 태그에 엔터를 누르면 버튼이 클릭이 되도록 설정
 	    $("#input_text").keyup(function(event) {
 	        if (event.which === 13) {
 	            $("#button").click();
