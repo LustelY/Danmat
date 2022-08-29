@@ -17,6 +17,9 @@ import com.cross.Danmat.WordRelay.Dao.WordRelayDao;
 import com.cross.Danmat.WordRelay.Service.WordRelayServiceImpl;
 import com.cross.Danmat.board.dao.BoardDao;
 import com.cross.Danmat.board.service.BoardServiceImpl;
+import com.cross.Danmat.crossWord.dao.CrossDao;
+import com.cross.Danmat.crossWord.service.CrossServiceImpl;
+import com.cross.Danmat.crossWord.service.MakeCW;
 
 @Configuration
 public class DataSourceConfig {
@@ -28,9 +31,9 @@ public class DataSourceConfig {
 		ds.setUrl("jdbc:mysql://localhost:3306/danmat?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull");
 		ds.setUsername("danmat");
 		ds.setPassword("danmat");
-		ds.setInitialSize(2);
-		ds.setMaxActive(10);
-		ds.setMaxIdle(10);
+		ds.setInitialSize(2); 				//커넥션 풀 초기화시 생성할 초기 커넥션 갯수(기본값 10개)
+		ds.setMaxActive(10);				//풀에서 가져올 수 있는 최대 커넥션 갯수(기본값 100개)
+		ds.setMaxIdle(10);					//풀에 유지할 수 있는 최대 커넥션 수(기본값은 maxActive와 동일)
 		return ds;
 	}
 	
@@ -95,5 +98,22 @@ public class DataSourceConfig {
 	public WordRelayServiceImpl wordRelayService() {
 		return new WordRelayServiceImpl(wordRelayDao());
 	}
-
+	
+	@Bean
+	public CrossDao crossDao() {
+		return new CrossDao(dataSource());
+	}
+	
+	@Bean
+	public CrossServiceImpl crossServiceImpl() {
+		return new CrossServiceImpl(crossDao());
+	}
+	
+	@Bean
+	public MakeCW makeCW() {
+		return new MakeCW(crossServiceImpl());
+	}
+	
+	
+	
 }
