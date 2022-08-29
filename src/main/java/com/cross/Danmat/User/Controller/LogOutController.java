@@ -25,6 +25,6 @@ public class LogOutController {
 		int logOut = 1;
 		model.addAttribute("logOut",logOut);
 		
-		return "user/logIn/logIn";
+		return "user/logOut/logOut";
 	}
 }

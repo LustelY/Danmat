@@ -11,11 +11,6 @@
 <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:if test="${logOut eq 1 }">
-<%
-response.sendRedirect(request.getHeader("referer"));
-%>
-</c:if>
 	    <% 
 	    String userid = (String)session.getAttribute("userid");
 		if (userid != null ){
