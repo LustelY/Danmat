@@ -24,25 +24,27 @@ public class Board {
 	private long readCount; // 조회수
 	private long replyCount; // 댓글 수
 	
+	
 	public Board() {
 		super();
 	}
 	
-	public Board(int board_idx, String userId, String title, String content, Date createDate, Long readCount) {
+	public Board(int board_idx, String notice, String userId, String title, String content, Date createDate, Long readCount, long replyCount) {
 		super();
 		this.board_idx = board_idx;
+		this.notice = notice;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.createDate = createDate;
 		this.readCount = readCount;
+		this.replyCount = replyCount;
 	}
 	
-	
-	
-	public Board(int board_idx, String title, String content, Date updateDate, Long readCount) {
+	public Board(int board_idx, String notice, String title, String content, Date updateDate, Long readCount) {
 		super();
 		this.board_idx = board_idx;
+		this.notice = notice;
 		this.title = title;
 		this.content = content;
 		this.updateDate = updateDate;

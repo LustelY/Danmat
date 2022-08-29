@@ -38,17 +38,17 @@ CREATE TABLE Rank(
 -----------------------------------------------------------------------------------
 -- 게시판 테이블
 CREATE TABLE BOARD(
-   board_idx      INT            PRIMARY KEY      AUTO_INCREMENT, -- board index num
-   notice         VARCHAR(1)      NOT NULL      DEFAULT 'N', -- 공지사항 여부
-   userId         VARCHAR(15)      NOT NULL, -- userId
-   title         VARCHAR(30)      NOT NULL, -- 제목
-   content         VARCHAR(300)   NOT NULL, -- 내용
-   createDate      TIMESTAMP      NOT NULL   DEFAULT CURRENT_TIMESTAMP, -- 게시글 생성 날짜
-   updateDate      TIMESTAMP      NOT NULL   DEFAULT 0, -- 게시글 수정 날짜
-   deleteDate      TIMESTAMP      NOT NULL   DEFAULT 0, -- 게시글 삭제 날짜
-   delete_yn      CHAR(1)         NOT NULL   DEFAULT 'N', -- 삭제된 게시글 여부(Y:삭제된 글)
-   readCount      BIGINT         NOT NULL   DEFAULT 0, -- 조회수
-   replyCount      BIGINT         NOT NULL   DEFAULT 0 -- 댓글 수
+	board_idx		INT				PRIMARY KEY		AUTO_INCREMENT, -- board index num
+	notice			VARCHAR(1)		NOT NULL		DEFAULT 'N', -- 공지사항 여부
+	userId			VARCHAR(15)		NOT NULL, -- userId
+	title			VARCHAR(30)		NOT NULL, -- 제목
+	content			VARCHAR(300)	NOT NULL, -- 내용
+	createDate		TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP, -- 게시글 생성 날짜
+	updateDate		TIMESTAMP		NOT NULL	DEFAULT 0, -- 게시글 수정 날짜
+	deleteDate		TIMESTAMP		NOT NULL	DEFAULT 0, -- 게시글 삭제 날짜
+	delete_yn		CHAR(1)			NOT NULL	DEFAULT 'N', -- 삭제된 게시글 여부(Y:삭제된 글)
+	readCount		BIGINT			NOT NULL	DEFAULT 0, -- 조회수
+	replyCount		BIGINT			NOT NULL	DEFAULT 0 -- 댓글 수
 )
 select * from BOARD;
 drop table board;

@@ -22,6 +22,12 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.boardList();
 	}
 	
+	// 공지 게시판 목록
+	@Override
+	public List<Board> noticeBoardList() {
+		return boardDao.noticeBoardList();
+	}
+		
 	// 게시물 작성
 	@Override
 	public void boardCreate(Board board) {
@@ -52,4 +58,18 @@ public class BoardServiceImpl implements BoardService {
 	public void readCount(int board_idx) {
 		boardDao.readCount(board_idx);		
 	}
+
+	@Override
+	public List<Board> SearchboardByTitle(String title) {
+		// TODO Auto-generated method stub
+		return boardDao.SearchBoardByTitle(title);
+	}
+
+	@Override
+	public List<Board> SearchboardByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return boardDao.SearchBoardByUserId(userId);
+	}
+	
+	
 }

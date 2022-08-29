@@ -16,6 +16,7 @@
 		</h1>
 		<nav class="links">
 			<ul>
+				<li><a href="notice">소식</a></li>
 				<li><a class="p-2" href="../ranking">랭킹</a></li>
 				<li><a class="p-2" href="../board">게시판</a></li>
 				<%
@@ -33,13 +34,6 @@
 				<%
 				}
 				%>
-			</ul>
-		</nav>
-		<nav class="main">
-			<ul>
-				<li class="search"><a class="fa-search" href="#search">Search</a>
-					<form id="search" method="get" action="#"></form></li>
-				<li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
 			</ul>
 		</nav>
 	</header>

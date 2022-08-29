@@ -14,23 +14,17 @@ if (userid == null) {
 <head>
 <meta charset="UTF-8">
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="author"	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
 <title>Danmat 게시판</title>
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/4.6/examples/pricing/">
+<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/pricing/">
 
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/common/nomalize.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/common/default.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/common/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/common/nomalize.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/common/default.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/common/bootstrap.min.css'/>">
 
 <style>
 .bd-placeholder-img {
@@ -52,8 +46,7 @@ if (userid == null) {
 
 <!-- Custom styles for this template -->
 
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/common/initial.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/common/initial.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/board/boardwrite.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
 </head>
@@ -69,7 +62,10 @@ if (userid == null) {
 			<nav class="navMenu">
 				<a class="p-2" href="../notice">소식</a> <a class="p-2"
 					href="../ranking">랭킹</a> <a class="p-2" href="../board">게시판</a>
+					
+				
 				<%
+				
 				if (userid == null) {
 				%>
 				<a class="p-2" href="signUp">회원가입</a> <a class="btn loginBtn"

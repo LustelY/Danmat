@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -45,7 +46,7 @@
 	<div class="bigWrap">
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-1 mb-1">
 			<div class="my-0 mr-md-auto font-weight-normal topLogo">
-				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span>danmat</span></a>
+				<img src="<c:url value='/resources/images/logo_transparent.png'/>"	alt=""><a href="main"><span style="font-weight: bold;">danmat</span></a>
 			</div>
 			<nav class="navMenu">
 				<a class="p-2" href="game">게임</a>
@@ -81,28 +82,14 @@
 								<h3>게시판</h3>
 							</div>
 						</div>
-						<!-- board seach area -->
-						<div id="board-search">
-							<div class="container">
-								<div class="search-window">
-									<form action="">
-										<div class="search-wrap">
-											<label for="search" class="blind">공지사항 내용 검색</label> <input
-												id="search" type="search" name="" placeholder="검색어를 입력해주세요."
-												value="">
-											<button type="submit" class="btn btn-dark">검색</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+					
 						<!-- board list area -->
 						<div id="board-list">
 							<div class="container">
 								<table class="board-table">
 									<thead>
 										<tr>
-											<th scope="col" class="th-num">번호</th>
+											<th scope="col" class="th-num">게시물번호</th>
 											<th scope="col" class="th-title">제목</th>
 											<th scope="col" class="th-userId">작성자</th>
 											<th scope="col" class="th-date">등록일</th>
@@ -110,13 +97,18 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${boardList}" var="board" begin="0" end="10" step="1">
+										<c:forEach items="${notice_list}" var="notice">
+										<tr class="noticeBoard">
+                    							<td style="color: purple">${notice.board_idx}</td>
+												<td style="text-align: left;"><a href="<c:url value='/board/boardDetail?board_idx=${notice.board_idx}' />">[공지]&nbsp;${notice.title}&nbsp;(${notice.replyCount})</a></td>
+                 			    				<td><c:out value="${notice.userId}" /></td>
+	                    						<td><c:out value="${notice.createDate}"/></td>
+	                    						<td><c:out value="${notice.readCount}"/></td>
+											</tr>
+										</c:forEach>
+										<c:forEach items="${boardList}" var="board" begin="${page }" end="${page+7 }" step="1">
 											<tr>
                     							<td><c:out value="${board.board_idx}"/></td>
-												<!--  <td style="text-align: left;"><a href="/board/boardDetail?board_idx=${board.board_idx}" style="border: none; text-decoration: none;">${board.title}</a></td>   -->
-												<!--  <td style="text-align: left;"><a href="board/boardDetail?board_idx=<c:out value='${board.board_idx}'/>" style="border: none; text-decoration: none;">
-													<c:out value="${board.title}"/></a></td>    -->
-												<!--  <td style="text-align: left;"><a href="$board/boardDetail?board_idx=${board.board_idx}">${board.title}</a></td>  -->
 												<td style="text-align: left;"><a href="<c:url value='/board/boardDetail?board_idx=${board.board_idx}'/>">${board.title}&nbsp;(${board.replyCount})</a></td>
                  			    				<td><c:out value="${board.userId}"/></td>
 	                    						<td><c:out value="${board.createDate}"/></td>
@@ -128,21 +120,36 @@
 								<a href="board/boardCreate" class="writer">글쓰기</a>
 							</div>
 						</div>
+						<!-- 게시물 리스트 끝 -->
+						
+						<!--  페이징 -->
 						<div class="paging">
-							<ul class="paging" id="pagination">
-								<li><a href="board">1</a></li>
-								<li><a href="board">...</a></li>
-							</ul>
+                  			<form action="board" method="POST">
+                     			<ul class="paging" id="pagination">${page_num}</ul>
+							</form>
+               			</div>
+						<!--  페이징 끝 -->
+							
+						<!-- board seach area -->
+						<div id="board-search">
+							<form:form action="searchBoard" method="POST">
+								<div style="display: inline-block;">
+									<select class="btn" name="type" style="text-align: center;">
+										<option value="unknown">--선택--</option>
+										<option value="title">제목</option>
+										<option value="userId">ID</option>
+									</select>
+									<input type="text" name="Name">
+									<input type="submit" value="검색">
+								</div>
+							</form:form>
 						</div>
 					</section>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
-		var start = 0;
-		var end = 0;
-	</script>
+
 </body>
 
 </html>

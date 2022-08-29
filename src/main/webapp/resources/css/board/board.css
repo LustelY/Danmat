@@ -400,21 +400,12 @@ table {
   border-spacing: 0;
 }
 
-section.notice {
-  
-}
-
-
 .page-title h3 {
   font-size: 28px;
   color: #6f61c9;
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
-}
-
-#board-search .search-window {
-  padding: 15px 0;
 }
 
 #board-search .search-window .search-wrap {
@@ -488,11 +479,14 @@ section.notice {
 
 .board-table th {
   text-align: center;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .board-table .th-num {
   width: 100px;
   text-align: center;
+  
 }
 
 .board-table .th-date {
@@ -508,11 +502,23 @@ section.notice {
   text-align: center;
 }
 
+.board-table tbody .noticeBoard {
+	color: purple;
+	font-weight: bold;
+}
+
+.board-table tbody .noticeBoard td a {
+	color: purple;
+	font-weight: bold;
+}
+
 .board-table tbody th {
   padding-left: 28px;
   padding-right: 14px;
   border-top: 1px solid #e7e7e7;
   text-align: left;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .board-table tbody th p {
@@ -603,7 +609,7 @@ section.notice {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 ul.paging {
@@ -632,15 +638,24 @@ ul.paging li a:hover, ul.paging li a:focus {
   background-color: #5dbde3;
 }
 
+ul.paging li input {
+   background: transparent;
+   border: 0px;
+   margin-right: 5px;
+}
+
+ul.paging li:last-of-type input{
+   margin-right: 0px;
+}
+
 .writer {
   position:absolute;
-  right: 13%;
+  right: 20%;
   display: flex;
   font-size: 15px;
   border-bottom: 0;
   font-weight: bold;
   letter-spacing: 0.25em;
-  line-height: 25px;
   width: 120px;
   height: 40px;
   background: #6f61c9;
@@ -702,4 +717,5 @@ ul.paging li a:hover, ul.paging li a:focus {
 a{
 	border: none;	
 }
+
 

@@ -8,6 +8,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.cross.Danmat.board.BoardRowMapper;
 import com.cross.Danmat.board.domain.Board;
 
 public class BoardDao {
@@ -23,39 +24,75 @@ public class BoardDao {
 	
 	// 게시판 목록
 	public List<Board> boardList() {
-		String sql = "select * from BOARD where delete_yn='N' order by board_idx desc";
-		return jdbcTemplate.query(sql, new RowMapper<Board>() {
+		String sql = "select * from board where delete_yn='n' and notice='N' order by board_idx desc";
+		return jdbcTemplate.query(sql,  new BoardRowMapper());
+	
+//		return jdbcTemplate.query(sql, new RowMapper<Board>() {
 
-			@Override
-			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
-						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
-						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
-						rs.getLong("replyCount"));
-				return board;
-			}
-		});
+//			@Override
+//			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+//				Board board = new Board(rs.getInt("board_idx"), rs.getString("userId"), rs.getString("title"),
+//						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
+//						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
+//						rs.getLong("replyCount"));
+//				return board;
+//			}
+//		});
 	}
 	
+	// 공지 목록
+	public List<Board> noticeBoardList() {
+		String sql = "select * from board where delete_yn='n' and notice='Y' order by board_idx desc limit 3";
+		return jdbcTemplate.query(sql,  new BoardRowMapper());
+	}
+		
 	// 게시물 작성
 	public void boardCreate(Board board) {
-		String sql = "INSERT INTO Board(userId, title, content) VALUES(?, ?, ?)";
-		jdbcTemplate.update(sql, board.getUserId(), board.getTitle(), board.getContent());		
+		String sql = "INSERT INTO Board(notice, userId, title, content) VALUES(?, ?, ?, ?)";
+		jdbcTemplate.update(sql, board.getNotice(), board.getUserId(), board.getTitle(), board.getContent());		
 	}
 	 
 	// 게시글 상세보기
 	public Board boardDetail(int board_idx) {
-		String sql = "select * from board where board_idx=?";
+		String sql = "select * from board where board_idx= ?";
 		return jdbcTemplate.queryForObject(sql, new RowMapper<Board>() {
 			@Override
 			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
-						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
-						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
+				Board board = new Board(rs.getInt("board_idx"), rs.getNString("notice"), rs.getString("userId"), rs.getString("title"),				
+						rs.getString("content"), rs.getDate("createDate"), rs.getLong("readCount"),
 						rs.getLong("replyCount"));
 				return board;
 			}
 		}, board_idx);
+	}
+	
+	// 게시글 검색
+	// 제목으로 검색
+	public List<Board> SearchBoardByTitle(String title){
+		String sql = "select * from board where title like '%'?'%'";
+		return jdbcTemplate.query(sql, new BoardRowMapper(), title);
+//		return jdbcTemplate.query(sql, new RowMapper<Board>() {
+//			@Override
+//			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+//				Board board = new Board(rs.getInt("board_idx"), rs.getNString("notice"), rs.getString("userId"), rs.getString("title"),				
+//						rs.getString("content"), rs.getDate("createDate"), rs.getLong("readCount"),
+//						rs.getLong("replyCount"));
+//				return board;
+//			}
+//		}, "%"+title+"%");
+	}
+	
+	public List<Board> SearchBoardByUserId(String userId){
+		String sql = "Select * from board where userId = ?";
+		return jdbcTemplate.query(sql, new RowMapper<Board>() {
+			@Override
+			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Board board = new Board(rs.getInt("board_idx"), rs.getNString("notice"), rs.getString("userId"), rs.getString("title"),				
+						rs.getString("content"), rs.getDate("createDate"), rs.getLong("readCount"),
+						rs.getLong("replyCount"));
+				return board;
+			}
+		}, userId);
 	}
 	
 	// 게시글 수정
