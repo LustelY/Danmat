@@ -24,12 +24,12 @@ public class ManagerDao {
 	
 	//아이디로 회원 찾기
 	public List<UserCommand> SearchEmailForm(String email){
-		String sql ="SELECT * FROM User WHERE email = ? ";
-		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+ email +"%");
+		String sql ="SELECT * FROM User WHERE email like ? ";
+		return jdbcTemplate.query(sql, new UserRowMapper(), "%" +email+"%");
 	}
 	
 	public List<UserCommand> SearchIdForm(String userid){
-		String sql ="SELECT * FROM User WHERE userid LIKE ? ";
+		String sql ="SELECT * FROM User WHERE userid like ? ";
 		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+ userid+ "%");
 	}
 	
@@ -58,7 +58,7 @@ public class ManagerDao {
 		return jdbcTemplate.query(sql, new UserRowMapper(), "%"+date+"%");
 	}
 	
-	//공지사항 목록
+	//새글 목록
 		public List<Board> newboardList(LocalDate date) {
 			String sql = "select * from BOARD where createDate Like ? order by board_idx desc";
 			return jdbcTemplate.query(sql, new RowMapper<Board>() {

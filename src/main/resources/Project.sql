@@ -45,7 +45,7 @@ CREATE TABLE BOARD(
 	content			VARCHAR(300)	NOT NULL, -- 내용
 	createDate		TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP, -- 게시글 생성 날짜
 	updateDate		TIMESTAMP		NOT NULL	DEFAULT 0, -- 게시글 수정 날짜
-	deleteDate		TIMESTAMP		NOT NULL	DEFAULT 0, -- 게시글 삭제 날짜
+	deleteDate		TIMESTAMP		NOT NULL	DEFAULT 0, -- 게시글  삭제 날짜
 	delete_yn		CHAR(1)			NOT NULL	DEFAULT 'N', -- 삭제된 게시글 여부(Y:삭제된 글)
 	readCount		BIGINT			NOT NULL	DEFAULT 0, -- 조회수
 	replyCount		BIGINT			NOT NULL	DEFAULT 0 -- 댓글 수

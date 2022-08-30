@@ -30,9 +30,8 @@ public class BoardSearchController {
 	@PostMapping
 	public String searchTitle(@RequestParam("type")String type,
 			@RequestParam("Name") String name, Model model) {
-		System.out.println(type);
-		System.out.println(name);
 		String page_input = "";
+		System.out.println(name);
 		if(type.equals("title")) {
 			List<Board> searchTitle = boardService.SearchboardByTitle(name);
 			model.addAttribute("boardList", searchTitle);
@@ -40,7 +39,7 @@ public class BoardSearchController {
 	        for(int i = 0; i < page_size; i++) {
 	           page_input += "<li><input type=submit name=page value="+(i+1)+"></li>";
 	        }
-		}else if(type.equals("UserId")) {
+		}else if(type.equals("userId")) {
 			List<Board> searchId = boardService.SearchboardByUserId(name);
 			model.addAttribute("boardList", searchId);
 			int page_size = (searchId.size() - 1)/8 + 1;
@@ -48,7 +47,6 @@ public class BoardSearchController {
 	           page_input += "<li><input type=submit name=page value="+(i+1)+"></li>";
 	        }
 		}
-			return "board/search/SearchByTitle";
-//		return "board/BoardList";
+			return "board/BoardList";
 	}
 }

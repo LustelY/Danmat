@@ -32,6 +32,8 @@ public class SearchUserController {
 	@PostMapping
 	public String searchId(@RequestParam("type")String type,
 			@RequestParam("Name") String name, Model model) {
+		System.out.println(type);
+		System.out.println(name);
 		if(type.equals("id")) {
 			List<UserCommand> searchId = managerservice.searchId(name);
 			model.addAttribute("user_list",searchId);

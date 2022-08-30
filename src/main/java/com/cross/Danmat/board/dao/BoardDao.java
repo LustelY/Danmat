@@ -69,8 +69,8 @@ public class BoardDao {
 	// 게시글 검색
 	// 제목으로 검색
 	public List<Board> SearchBoardByTitle(String title){
-		String sql = "select * from board where title like '%'?'%'";
-		return jdbcTemplate.query(sql, new BoardRowMapper(), title);
+		String sql = "select * from board where title like ?";
+		return jdbcTemplate.query(sql, new BoardRowMapper(),"%"+ title+"%");
 //		return jdbcTemplate.query(sql, new RowMapper<Board>() {
 //			@Override
 //			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -83,16 +83,8 @@ public class BoardDao {
 	}
 	
 	public List<Board> SearchBoardByUserId(String userId){
-		String sql = "Select * from board where userId = ?";
-		return jdbcTemplate.query(sql, new RowMapper<Board>() {
-			@Override
-			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Board board = new Board(rs.getInt("board_idx"), rs.getNString("notice"), rs.getString("userId"), rs.getString("title"),				
-						rs.getString("content"), rs.getDate("createDate"), rs.getLong("readCount"),
-						rs.getLong("replyCount"));
-				return board;
-			}
-		}, userId);
+		String sql = "select * from board where userId = ?";
+		return jdbcTemplate.query(sql, new BoardRowMapper(), userId);
 	}
 	
 	// 게시글 수정

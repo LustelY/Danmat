@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="<c:url value='/resources/css/board/board.css'/>">
   </head>
   <body>
+  <% 
+    String userid = (String)session.getAttribute("userid");
+    if (userid == null || !userid.equals("admin")){
+        response.sendRedirect("main");
+        return;
+    }
+    %>
     <header id="header">
   <h1><a href="main"><img src="<c:url value='/resources/images/logo_transparent.png'/>" style="left: 85px; top:0; width: 100px; opacity:0.6;">danmat</a></h1>
   <nav class="links">
@@ -18,8 +25,7 @@
 		<li><a href="#">소식</a></li>
         <li><a class="p-2" href="ranking">랭킹</a></li>
         <li><a class="p-2" href="board">게시판</a></li>
-		<% String userid = (String)session.getAttribute("userid");
-		if(userid == null ){%>
+		<%if(userid == null ){%>
 		<li><a href="signUp">회원가입</a></li>
 		<li><a href="logIn" class="loginBtn" style="font-size: 20px; color:#c2bde3;">로그인</a></li>
 		<%} else {%>
