@@ -144,6 +144,7 @@ ex			VARCHAR(2000)	NOT NULL
 
 select * from word WHERE word = '멍게';
 
+
 -----------------------------------------------------------------------------------
 -- 사용 단어 테이블
 CREATE TABLE isuse (
@@ -166,3 +167,37 @@ select * from point;
 insert into point (point) values(10);
 
 Select sum(point) from point;
+
+-------------------------------------------------------------------------------------
+-- 게임리스트 테이블
+
+CREATE TABLE CWList (      -- 게임 생성 테이블입니다. 해당 테이블에서 생성된 게임 중 원하는 게임만 gameList 에 추가되도록 합니다. 
+
+   gid            BIGINT         NOT NULL,      -- 자동 생성된 게임 순번입니다. 선택 후 삭제시 해당 번호를 기준으로 전체가 삭제됩니다.
+   gameSize      BIGINT         NOT NULL,   -- 해당 게임의 크기입니다 ex) 11*11, 13*13 ...
+   wordNum         INTEGER         NOT NULL,   -- 단어의 순번입니다.
+   dir            CHAR         NOT NULL,   -- 단어의 방향입니다.   dir값이 x일 경우 가로로 작성된 단어, dir값이 y일 경우 세로로 작성된 단어
+   word         VARCHAR(10)      NOT NULL,   -- 단어의 명칭입니다.   ex)수수방관, 구구절절, 초시계 ...
+   xLocation      INTEGER         NOT NULL,   -- 해당 단어의 시작 x좌표값입니다.
+   yLocation      INTEGER         NOT NULL   -- 해당 단어의 시작 y좌표값입니다.
+);
+
+SELECT * FROM CWList;
+
+DROP TABLE CWList;
+
+INSERT INTO CWList (gid, gameSize, wordNum, dir, word, xLocation, yLocation) VALUES (1, 0, 0, 'x', '시작지점', 0, 0);
+
+   -- 최초에 한개 이상 등록되어있어야 gid값 관련 메소드들이 작동할 수 있습니다.
+
+
+SELECT DISTINCT gid FROM CWList ORDER BY gid ASC;
+
+
+SELECT COUNT ( DISTINCT ) gid FROM CWList  ;
+
+SELECT COUNT(wordNum) FROM CWList WHERE gid=7;
+
+SELECT * FROM CWList WHERE gid=7;
+
+SELECT MAX(wordNum) FROM CWList WHERE gid=7
