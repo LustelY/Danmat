@@ -1,5 +1,6 @@
 # Danmat
 
+##사양
 개발 환경:
 - Eclipse(ver. 2022-06)
 - mysql(ver. 8.0.29)
