@@ -100,7 +100,7 @@
               <div class="img"></div>
               </div>
               <div class="text-wrap">
-                  <h1 class="start-btn"><a href="#">시작하기</a></h1>
+                  <h1 class="start-btn"><a id="Crossword" href="#">시작하기</a></h1>
               </div>
             </div>
           </div>
@@ -195,6 +195,10 @@
 	pageTransition(document.querySelectorAll("a"))
 	
     document.body.classList.add("reveal");
+	
+	document.querySelector("a#Crossword").addEventListener('click', function(){
+		alert("준비 중입니다.");
+	});
   </script>
 </body>
 

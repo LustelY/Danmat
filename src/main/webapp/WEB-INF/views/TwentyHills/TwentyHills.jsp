@@ -31,7 +31,7 @@
           <div class="wrap">
             <div class="game">
               <div class="userid">
-                <div style="width: 220px;">남은횟수 : ${life }</div>
+                <div style="width: 220px;" id="life">남은횟수 : ${life }</div>
                 <%String userid = (String)session.getAttribute("userid"); 
 				if(userid == null){%>
 				<div style="width: 220px;">guest</div>
@@ -84,7 +84,7 @@
 							}
 						}
 						if(check == input.length){
-						var input = document.querySelectorAll('.input');
+						var input = document.querySelectorAll('input.input');
 						for(let i = 0; i<result.length; i++){
 								if(input[i].value == result[i]){
 									input[i].style.background = '#8CD790';
@@ -97,14 +97,14 @@
 							}	
 						}
 						h_count++;
-						if(document.querySelectorAll(".hint").length <= h_count){
+						if(document.querySelectorAll('.hint').length <= h_count){
 							document.querySelector('#Restart').setAttribute("type","submit");
 							console.log("힌트가 없습니다.");
 						}else {
 						document.querySelectorAll(".hint")[h_count].removeAttribute("hidden");				
 						}
 						if(result.length == count){
-							document.getElementById('hint').innerHTML = "<h3 id=GameClear>정답입니다. \n 총 점수: "+(life*10)+"점 입니다.</h3>";
+							document.querySelectorAll('div.game').innerHTML = "<h3 id=GameClear>정답입니다. \n 총 점수: "+(life*10)+"점 입니다.</h3>";
 							for(let i = 0; i<result.length; i++){
 								input[i].setAttribute("type","hidden");
 							}
@@ -112,16 +112,16 @@
 							document.querySelector('#Restart').setAttribute("type","submit");
 							document.querySelector("#Hint").setAttribute("type","hidden");
 							document.querySelector("input#Answer").setAttribute("type","hidden");
-							document.querySelector(".life").remove();
+							document.querySelector(".life").remove();	
 							document.querySelector("#input label").remove();
 							document.querySelector('p').remove();
 							End_game();
 						}
 						if(life > 0){
 							life--;
-							document.getElementById("life").innerHTML = "<label>남은 횟수:</label>&nbsp;&nbsp;"+life;
+							document.getElementById("life").innerHTML = "남은 횟수:&nbsp;&nbsp;"+life;
 							}else {
-								document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+								document.querySelectorAll('.game')[0].innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
 								for(let i = 0; i<result.length; i++){
 									input[i].setAttribute("type","hidden");
 								}
@@ -163,7 +163,7 @@
 					}
 				document.querySelector('input#Answer').addEventListener('click',
 						function(){
-					document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+					document.querySelectorAll('.game')[0].innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
 					for(let i = 0; i<result.length; i++){
 						input[i].setAttribute("type","hidden");
 					}
@@ -171,7 +171,7 @@
 				});
 				});
 			if(life <= 1){
-				document.getElementById('hint').innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
+				document.querySelectorAll('.game')[0].innerHTML="<h3 id=GameOver>Game Over</h3><h3 id=Answer>정답은 "+result+"입니다.</h3>";
 				End_game();
 			}
 			for(let i = 0; i < 5; i++){
