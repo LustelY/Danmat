@@ -30,7 +30,7 @@ public class WordRelayController {
 		List<Word> randomWord = wordRelayService.randomWord();
 		model.addAttribute("randomWord",randomWord.get(0).getWord());
 		random = randomWord.get(0).getWord();
-		
+		System.out.println(random);
 		wordRelayService.delete(); //사용된 단어 DB 데이터 삭제
 		System.out.println("데이터삭제");
 		wordRelayService.delete2();
@@ -52,7 +52,6 @@ public class WordRelayController {
 		model.addAttribute("point",point);
 		model.addAttribute("point",point);
  		model.addAttribute("result",result);
- 		System.out.println();
 		
 		String input_text = request.getParameter("input_text");
 		model.addAttribute("input_text",input_text);
@@ -64,6 +63,7 @@ public class WordRelayController {
 		
 		int checkWord = wordRelayService.checkWord(input_text); //DB에 등록된 단어 확인
 		
+		System.out.println(random);
 		if(random != null) { //처음 랜덤 word가 값이 있을때 아래 로직이 실행
 			if(checkWord == 0) { //입력값이 DB에 등록이 된경우 로직 실행
 				String[] inputSpl = input_text.split("");

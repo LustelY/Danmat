@@ -56,20 +56,14 @@
       </div>
         <div class="input-wrap">       
          <input id="input_text" class="input_text input-text" placeholder="단어를 입력하세요." autofocus="autofocus" min="1" onKeypress="javascript:if(event.keyCode==13){document.getElementById('button').click()}"/>
-         <input type="button" value="입력하기" id="button" style="position: absolute; bottom: -500px;" >
+         <input type="button" value="입력하기" id="button" style="display: none;" >
       </div>
       <script>
 		$(function () { //해당 아이디를 가진 태그에 엔터를 누르면 버튼이 클릭이 되도록 설정
-	    $("#input_text").keyup(function(event) {
-	        if (event.which === 13) {
-	            $("#button").click();
-	        }
-	    });
-		
 	    $("#button").click(function () { //버튼이 클릭되면 아래 ajax와 비동기 통신을 하도록 설정
 	        $.ajax({    
 	            type : "post",
-	            url : "http://localhost:8080/Danmat/wordRelay",
+	            url : window.location.href,
 	            //여러개 데이터 보낼 때 Json 방식
 	            data : {
 	            	input_text : $("#input_text").val(),
