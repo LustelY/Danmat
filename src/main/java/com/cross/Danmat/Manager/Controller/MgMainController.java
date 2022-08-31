@@ -26,7 +26,7 @@ public class MgMainController {  //관리자 메인 창
 	public String MgMainPage(Model model) {
 		List<UserCommand> user_list = managerService.AllUserList();
 		LocalDate now = LocalDate.now();
-		List<Board> board_list = managerService.BoardList(now);
+		List<Board> board_list = managerService.BoardList();
 		List<UserCommand> new_user_list = managerService.getNewUserCount(now);
 		model.addAttribute("total_user",user_list.size());
 		model.addAttribute("new_user", new_user_list.size());

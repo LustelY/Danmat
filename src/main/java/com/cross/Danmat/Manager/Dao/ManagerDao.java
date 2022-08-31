@@ -73,6 +73,21 @@ public class ManagerDao {
 				}
 			}, "%"+date+"%");
 		}
+		
+		public List<Board> boardList() {
+			String sql = "select * from BOARD order by board_idx desc";
+			return jdbcTemplate.query(sql, new RowMapper<Board>() {
+
+				@Override
+				public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Board board = new Board(rs.getInt("board_idx"),rs.getString("notice"), rs.getString("userId"), rs.getString("title"),
+							rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
+							rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
+							rs.getLong("replyCount"));
+					return board;
+				}
+			});
+		}
 	
 		//게시글 삭제
 		public void DeleteBoard(String board_idx) {

@@ -69,9 +69,9 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 	
 	@Override
-	public List<Board> BoardList(LocalDate now) {
+	public List<Board> BoardList() {
 		// TODO Auto-generated method stub
-		return managerDao.newboardList(now);
+		return managerDao.boardList();
 	}
 
 
@@ -80,7 +80,11 @@ public class ManagerServiceImpl implements ManagerService{
 		// TODO Auto-generated method stub
 		managerDao.DeleteBoard(board_idx);
 	}
-	
-	
 
+
+	@Override
+	public List<Board> newBoardList(LocalDate date) {
+		// TODO Auto-generated method stub
+		return managerDao.newboardList(date);
+	}
 }

@@ -20,7 +20,9 @@ public interface ManagerService {
 	
 	List<UserCommand> getNewUserCount(LocalDate now);
 	
-	public List<Board> BoardList(LocalDate date);
+	public List<Board> newBoardList(LocalDate date);
 	
 	void DeleteBoard(String board_idx);
+	
+	public List<Board> BoardList();
 }

@@ -11,7 +11,12 @@
 </head> 
 <body>
     <div class="def">
-    <span>설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다설명설명 주저리주저리주저리주저리 해서 주저리하면 된다</span>
+    <span>주어진 보기를 보고서 해당 뜻에 맞는 단어를 맞추는 게임이다.</span>
+    <span class="name"> =정답&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=자리가 틀림&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 틀림</span>
+    <div class="Answer"></div>
+    <div class="Word_Answer"></div>
+    <div class="Wrong_Answer"></div>
+    <span></span>
     <p>게임설명</p>
     </div>
     <div class="toplogo" style="z-index: 999;">
@@ -29,7 +34,6 @@
       </div>
         <div class="main-wrap">
           <div class="wrap">
-            <div class="game">
               <div class="userid">
                 <div style="width: 220px;" id="life">남은횟수 : ${life }</div>
                 <%String userid = (String)session.getAttribute("userid"); 
@@ -40,6 +44,8 @@
 				<%} %>               
               </div>
               
+            <div class="game">
+            <h2>보기</h2>
          	<c:forEach items="${hint }" var="hint">		
 			<c:if test="${not empty hint}">
 			<h3 class="hint" hidden>${hint }</h3>
@@ -104,7 +110,7 @@
 						document.querySelectorAll(".hint")[h_count].removeAttribute("hidden");				
 						}
 						if(result.length == count){
-							document.querySelectorAll('div.game').innerHTML = "<h3 id=GameClear>정답입니다. \n 총 점수: "+(life*10)+"점 입니다.</h3>";
+							document.querySelectorAll('.game')[0].innerHTML = "<h3 id=GameClear>정답입니다. \n 총 점수: "+(life*10)+"점 입니다.</h3>";
 							for(let i = 0; i<result.length; i++){
 								input[i].setAttribute("type","hidden");
 							}

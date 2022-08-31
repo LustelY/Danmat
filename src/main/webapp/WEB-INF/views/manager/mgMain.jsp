@@ -112,7 +112,7 @@
             <div class="recentOrders">
               <div class="cardHeader">
                 <h2>최근 게시글</h2>
-                <a href="#" class="btn">전체보기</a>
+                <a href="board" class="btn">전체보기</a>
               </div>
               <table>
                 <thead>

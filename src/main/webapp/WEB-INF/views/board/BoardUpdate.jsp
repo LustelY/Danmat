@@ -46,7 +46,7 @@
 		</div>
 			<form method="post" action="boardUpdate">
 			<div class="form-group">
-				<label for="title">제목</label> <input class="form-control"	name="title" value=${board.title } style="font-size: 25px;">
+				<label for="title">제목</label> <input class="form-control"	name="title" value="${board.title }" style="font-size: 25px;">
 			</div>
 			<div class="form-group">
 				<label for="content">내용</label>
