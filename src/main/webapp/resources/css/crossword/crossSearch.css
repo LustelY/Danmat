@@ -9,11 +9,11 @@
 
 @font-face {
   font-family: 'Binggrae-Bold';
-  src: url("../font/BinggraeSamanco-Bold.otf") format("truetype");
+  src: url("../../font/BinggraeSamanco-Bold.otf") format("truetype");
 }
 @font-face {
   font-family: 'BinggraeSamanco';
-  src: url("../font/BinggraeSamanco.otf") format("truetype");
+  src: url("../../font/BinggraeSamanco.otf") format("truetype");
 }
 
 :root {
@@ -272,8 +272,9 @@ body::-webkit-scrollbar {
 
 .cardHeader {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .cardHeader h2 {
@@ -282,6 +283,24 @@ body::-webkit-scrollbar {
 }
 
 
+
+.cardHeader .crossword table {
+	border : solid 2px purple;
+}
+
+
+.cardHeader .crossword table tr td {
+	width : 35px;
+	height : 35px;
+	text-align: center;
+	border: solid 2px purple;
+	border-radius : 10px;
+	font-size: 13px;
+	line-height: 13px;
+}
+.cardHeader .crossword td:empty {
+	background: #c2bde3;
+}
 .btn {
   position: relative;
   padding: 5px 10px;

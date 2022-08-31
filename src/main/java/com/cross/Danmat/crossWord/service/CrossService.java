@@ -3,8 +3,8 @@ package com.cross.Danmat.crossWord.service;
 import java.util.List;
 
 import com.cross.Danmat.crossWord.command.GidCommand;
-import com.cross.Danmat.crossWord.domain.CWList;
-import com.cross.Danmat.crossWord.domain.CrossWord;
+import com.cross.Danmat.crossWord.domain.Crossword;
+import com.cross.Danmat.crossWord.domain.Word;
 
 public interface CrossService {
 	
@@ -13,7 +13,7 @@ public interface CrossService {
 	 * @param crossWord
 	 * @return
 	 */
-	public List<CrossWord> firstWord(CrossWord crossWord);
+	public List<Word> firstWord(Word crossWord);
 	
 	
 	/**
@@ -21,7 +21,7 @@ public interface CrossService {
 	 * @param crossWord
 	 * @return
 	 */
-	public List<CrossWord> allWord(CrossWord crossWord);
+	public List<Word> allWord(Word crossWord);
 	
 	
 	/**
@@ -29,7 +29,7 @@ public interface CrossService {
 	 * @param crossWord
 	 * @return
 	 */
-	public List<CrossWord> randomWord(CrossWord crossWord);
+	public List<Word> randomWord(Word crossWord);
 
 	
 	/**
@@ -37,21 +37,21 @@ public interface CrossService {
 	 * @param check
 	 * @return
 	 */
-	public List<CrossWord> checkWord(String check);
+	public List<Word> checkWord(String check);
 	
 	
 	/**
 	 * 게임판을 작성 후 게임 리스트 중 오류가 있거나 해당 게임판과는 결이 맞지 않는 자료를 삭제하기 위한 메소드입니다.
 	 * @param cwList
 	 */
-	public void deleteList(CWList cwList);
+	public void deleteList(Crossword cwList);
 	
 	
 	/**
 	 * 만들어진 게임판을 DB에 넣기 위한 메소드입니다.
 	 * @param cwList
 	 */
-	public void addToList(CWList cwList);
+	public void addToList(Crossword cwList);
 	
 	
 	/**
@@ -59,7 +59,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand randomGid(CWList cwList);
+	public GidCommand randomGid(Crossword cwList);
 	
 	
 	/**
@@ -67,7 +67,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public List<CWList> playGame(CWList cwList);
+	public List<Crossword> playGame(Crossword cwList);
 	
 	
 	/**
@@ -75,7 +75,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand lastCWNum(CWList cwList);
+	public GidCommand lastCWNum(Crossword cwList);
 	
 	/**
 	 * 게임판 생성 후 확인하며 삭제할 시 리스트를 뽑아내기 위해 중복된 gid값을 제거하고 오름차순으로 gid를 정리하기 위한 메소드입니다.
@@ -89,14 +89,14 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public List<CWList> findByGid(CWList cwList);
+	public List<Crossword> findByGid(Crossword cwList);
 	
 	/**
 	 * 해당 gid값으로 List의 길이가 얼마정도인지를 알아내기 위한 메소드입니다. .length값으로 사용하시면 됩니다.
 	 * @param cwList
 	 * @return
 	 */
-	public int wordNumByGid(CWList cwList);
+	public int wordNumByGid(Crossword cwList);
 	
 	
 	

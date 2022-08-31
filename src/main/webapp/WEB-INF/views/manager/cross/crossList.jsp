@@ -78,7 +78,7 @@
 	                <form action="crossList" method="POST">
 				    	<button type="submit" class="btn btn-default" style="background: #6f61c9; margin-top: 30px;">게임판 추가하기</button>
   					</form>
-  					<form action="crossSearch" method="post">
+  					<form action="crossSearch" method="get">
   						<button type="submit" class="btn btn-default" style="background: #6f61c9; margin-top: 30px;">게임판 확인하기</button>
 
   					</form>

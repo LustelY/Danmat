@@ -7,8 +7,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import com.cross.Danmat.crossWord.dao.CrossDao;
 
 import com.cross.Danmat.crossWord.command.GidCommand;
-import com.cross.Danmat.crossWord.domain.CWList;
-import com.cross.Danmat.crossWord.domain.CrossWord;
+import com.cross.Danmat.crossWord.domain.Crossword;
+import com.cross.Danmat.crossWord.domain.Word;
 
 public class CrossServiceImpl implements CrossService {
 	DataSource datasource = new DataSource();
@@ -24,39 +24,39 @@ public class CrossServiceImpl implements CrossService {
 		this.crossDao = crossDao;
 	}
 	
-	public List<CrossWord> firstWord(CrossWord crossWord) {
+	public List<Word> firstWord(Word crossWord) {
 		return crossDao.firstWord(crossWord);
 	}
 	
-	public List<CrossWord> allWord(CrossWord crossWord) {
+	public List<Word> allWord(Word crossWord) {
 		return crossDao.allWord(crossWord);
 	}
 	
-	public List<CrossWord> randomWord(CrossWord crossWord) {
+	public List<Word> randomWord(Word crossWord) {
 		return crossDao.randomWord(crossWord);
 	}
 
-	public List<CrossWord> checkWord(String check) {
+	public List<Word> checkWord(String check) {
 		return crossDao.checkWord(check);
 	}
 	
-	public void deleteList(CWList cwList) {
+	public void deleteList(Crossword cwList) {
 		this.crossDao.deleteList(cwList);
 	}
 	
-	public void addToList(CWList cwList) {
+	public void addToList(Crossword cwList) {
 		this.crossDao.addToList(cwList);
 	}
 	
-	public GidCommand randomGid(CWList cwList) {
+	public GidCommand randomGid(Crossword cwList) {
 		return this.crossDao.randomGid(cwList);
 	}
 	
-	public List<CWList> playGame(CWList cwList) {
+	public List<Crossword> playGame(Crossword cwList) {
 		return this.crossDao.playGame(cwList);
 	}
 	
-	public GidCommand lastCWNum(CWList cwList) {
+	public GidCommand lastCWNum(Crossword cwList) {
 		return this.crossDao.lastCWNum(cwList);
 	}
 	public void makeCrossWord (int size, int repeatNum) {
@@ -67,11 +67,11 @@ public class CrossServiceImpl implements CrossService {
 		return this.crossDao.allGid();
 	}
 	
-	public List<CWList> findByGid(CWList cwList) {
+	public List<Crossword> findByGid(Crossword cwList) {
 		return crossDao.findByGid(cwList);
 	}
 	
-	public int wordNumByGid(CWList cwList) {
+	public int wordNumByGid(Crossword cwList) {
 		return crossDao.wordNumByGid(cwList).size();
 	}
 	

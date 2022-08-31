@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crossword 생성</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mgMain.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/crossword/crossSearch.css'/>">
 <link rel="stylesheet" href="./css/font.css" />
 </head>
 
@@ -74,50 +75,18 @@
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
-                <form action="crossAdd" method="POST">
-             	   <h2>크로스 워드</h2> <br>
-		           <div class="submit">
-		             <p class="mgMain"><a href="mgMain" style="color: #fff;">메인페이지</a></p>
-		           </div>
-		        </form>
-	              <table>
-	                  <tr>
-	                    <td>  </td>
-	                    <td>번호</td>
-	                    <td>크로스워드</td>
-	                    <td>등록일</td>
-	                    <td>관리</td>
-	                  </tr>
-	             <!--    <c:forEach items="${user_list }" var="user_list">
-	                <tr>
-	                  <td>${user_list.userid}</td>
-	                  <td>${user_list.email }</td>
-	                  <td>${user_list.regDate }</td>
-	             <form method="Get" action="/Danmat/manager/delete_cross">
-	                  <input type="hidden" name = userid value="${user_list.userid }"/>
-	                  <td><input type="submit" value="삭제"></td>
-	                  </form>  
-	                </tr>
-	                </c:forEach>  -->
-	                  <tr>
-	                    <td><input type=checkbox name=number/></td>
-	                    <td>1</td>
-	                    <td>들어갈 곳</td>
-	                    <td>2022-08-26</td>
-	                    <td><button>삭제</button></td>
-	                  </tr>
-	                  <tr>
-	                    <td><input type=checkbox name=number/></td>
-	                    <td>2</td>
-	                    <td>들어갈 곳</td>
-	                    <td>2022-08-26</td>
-	                    <td><button>삭제</button></td>
-	                  </tr>
-	                </tbody>
-	              </table>
+           	    <h2>게임 리스트</h2> <br>
+           	    <!-- 역순 표시 방법 -->
+           	    <c:set var="tableLength" value="${fn:length(gameTable)}"/>
+       		 	<c:forEach items="${gameTable}" var="game" varStatus="status">
+       		 		${gameTable[tableLength - status.count]}
+       		 	</c:forEach>
+       		 	
+				       		 	
+		        
        		  </div>
        		 </div>
-        
+       		 	
             <!-- Footer 영역 -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

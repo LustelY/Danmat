@@ -7,8 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.cross.Danmat.Config.DataSourceConfig;
 import com.cross.Danmat.crossWord.dao.CrossDao;
-import com.cross.Danmat.crossWord.domain.CWList;
-import com.cross.Danmat.crossWord.domain.CrossWord;
+import com.cross.Danmat.crossWord.domain.Crossword;
+import com.cross.Danmat.crossWord.domain.Word;
 
 public class MakeCW {
 	
@@ -21,11 +21,11 @@ public class MakeCW {
 	}
 	public void MakeCrossWord(int size, int a) {  // 게임사이즈 size,  반복횟수 a  입력하기
 		CrossServiceImpl crossService = new CrossServiceImpl();
-		CWList cwList = new CWList();
+		Crossword cwList = new Crossword();
 		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DataSourceConfig.class);
 		crossService = context.getBean("crossServiceImpl", CrossServiceImpl.class);
-		CrossWord crossWord = new CrossWord();
+		Word crossWord = new Word();
 		
 		int c = crossService.crossDao.lastCWNum(cwList).getTakeGid() + 1;
 		
@@ -841,7 +841,7 @@ public class MakeCW {
 //		CrossServiceImpl crossServiceImpl = new CrossServiceImpl(crossDao);
 //		CWList cwList = null;
 		int a = 5;
-		int b = 3;
+		int b = 1;
 		
 		MakeCW makeCW;
 		makeCW = new MakeCW();

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CWList {
+public class Crossword {
 	private int gid;
 	private int gameSize;
 	private int wordNum;
@@ -16,7 +16,7 @@ public class CWList {
 	private int xLocation;
 	private int yLocation;
 	
-	public CWList() {
+	public Crossword() {
 		super();
 	}
 

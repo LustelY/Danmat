@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.cross.Danmat.crossWord.command.CountCommand;
 import com.cross.Danmat.crossWord.command.GidCommand;
-import com.cross.Danmat.crossWord.domain.CWList;
-import com.cross.Danmat.crossWord.domain.CrossWord;
+import com.cross.Danmat.crossWord.domain.Crossword;
+import com.cross.Danmat.crossWord.domain.Word;
 
 public class CrossDao {
 	
@@ -30,13 +30,13 @@ public class CrossDao {
 	
 //	CrossWord crossWord;
 	
-	public List<CrossWord> allWord(CrossWord crossWord) {
+	public List<Word> allWord(Word crossWord) {
 		String sql = "SELECT * FROM word";
-		return jdbcTemplate.query(sql, new RowMapper<CrossWord>() {
+		return jdbcTemplate.query(sql, new RowMapper<Word>() {
 
 			@Override
-			public CrossWord mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CrossWord crossWord = new CrossWord(rs.getInt("wid"), rs.getString("word"),
+			public Word mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Word crossWord = new Word(rs.getInt("wid"), rs.getString("word"),
 						rs.getInt("len"), rs.getInt("grade"), rs.getString("category"),
 						rs.getString("category2"), rs.getString("def"), rs.getString("ex"));
 				return crossWord;
@@ -44,13 +44,13 @@ public class CrossDao {
 		});
 	}
 	
-	public List<CrossWord> randomWord( CrossWord crossWord) {
+	public List<Word> randomWord( Word crossWord) {
 		String sql = "SELECT * FROM word len > 2 WHERE ORDER BY RAND() limit 1";
-		return jdbcTemplate.query(sql, new RowMapper<CrossWord>() {
+		return jdbcTemplate.query(sql, new RowMapper<Word>() {
 
 			@Override
-			public CrossWord mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CrossWord crossWord = new CrossWord(rs.getInt("wid"), rs.getString("word"),
+			public Word mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Word crossWord = new Word(rs.getInt("wid"), rs.getString("word"),
 						rs.getInt("len"), rs.getInt("grade"), rs.getString("category"),
 						rs.getString("category2"), rs.getString("def"), rs.getString("ex"));
 				return crossWord;
@@ -58,13 +58,13 @@ public class CrossDao {
 		});
 	}
 	
-	public List<CrossWord> firstWord( CrossWord crossWord) {
+	public List<Word> firstWord( Word crossWord) {
 		String sql = "SELECT * FROM word WHERE len = 4 ORDER BY RAND() limit 1";
-		return jdbcTemplate.query(sql, new RowMapper<CrossWord>() {
+		return jdbcTemplate.query(sql, new RowMapper<Word>() {
 
 			@Override
-			public CrossWord mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CrossWord crossWord = new CrossWord(rs.getInt("wid"), rs.getString("word"),
+			public Word mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Word crossWord = new Word(rs.getInt("wid"), rs.getString("word"),
 						rs.getInt("len"), rs.getInt("grade"), rs.getString("category"),
 						rs.getString("category2"), rs.getString("def"), rs.getString("ex"));
 				return crossWord;
@@ -75,13 +75,13 @@ public class CrossDao {
 	/**
 	 * 랜덤으로 check값을 가진 단어를 추출해낸다
 	 */
-	public List<CrossWord> checkWord(String check) {
+	public List<Word> checkWord(String check) {
 		String sql = "SELECT * FROM word WHERE word LIKE ? ORDER BY RAND() limit 1";
-		return jdbcTemplate.query(sql, new RowMapper<CrossWord>() {
+		return jdbcTemplate.query(sql, new RowMapper<Word>() {
 
 			@Override
-			public CrossWord mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CrossWord crossWord = new CrossWord(rs.getInt("wid"), rs.getString("word"),
+			public Word mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Word crossWord = new Word(rs.getInt("wid"), rs.getString("word"),
 						rs.getInt("len"), rs.getInt("grade"), rs.getString("category"),
 						rs.getString("category2"), rs.getString("def"), rs.getString("ex"));
 				return crossWord;
@@ -98,7 +98,7 @@ public class CrossDao {
 	 * 관리자 페이지에서 게임판 생성을 위한 메소드
 	 * @param cwList
 	 */
-	public void addToList ( CWList cwList ) {
+	public void addToList ( Crossword cwList ) {
 		String sql = "INSERT INTO CWList (gid, gameSize, wordNum, dir, word, xLocation, yLocation) "
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, cwList.getGid(), cwList.getGameSize(), cwList.getWordNum(), cwList.getDir(),
@@ -110,12 +110,12 @@ public class CrossDao {
 	 * 관리자 페이지에서 게임 리스트를 확인 후 삭제할때 사용할 메소드
 	 * @param cwList
 	 */
-	public void deleteList ( CWList cwList ) {
+	public void deleteList ( Crossword cwList ) {
 		String sql = "DELETE FROM CWList WHERE gid=?";
-		jdbcTemplate.update(sql, new RowMapper<CWList>() {
+		jdbcTemplate.update(sql, new RowMapper<Crossword>() {
 			@Override
-			public CWList mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CWList cwList = new CWList(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
+			public Crossword mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Crossword cwList = new Crossword(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
 						rs.getString("word"), rs.getInt("xLocation"), rs.getInt("yLocation"));
 				return cwList;
 			}
@@ -130,7 +130,7 @@ public class CrossDao {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand lastCWNum ( CWList cwList ) {
+	public GidCommand lastCWNum ( Crossword cwList ) {
 		String sql = "SELECT gid FROM CWList ORDER BY gid DESC limit 1";
 		return jdbcTemplate.queryForObject(sql, new RowMapper<GidCommand>() {
 
@@ -165,12 +165,12 @@ public class CrossDao {
 	 * @param cwList
 	 * @return
 	 */
-	public List<CWList> findByGid ( CWList cwList ) {
+	public List<Crossword> findByGid ( Crossword cwList ) {
 		String sql = "SELECT * FROM CWList WHERE gid=?";
-		return jdbcTemplate.query(sql, new RowMapper<CWList>() {
+		return jdbcTemplate.query(sql, new RowMapper<Crossword>() {
 			@Override
-			public CWList mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CWList list = new CWList(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
+			public Crossword mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Crossword list = new Crossword(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
 						rs.getString("word"), rs.getInt("xLocation"), rs.getInt("yLocation"));
 				return list;
 			}
@@ -178,13 +178,13 @@ public class CrossDao {
 	}
 	
 	
-	public List<CWList> wordNumByGid(CWList cwList) {
+	public List<Crossword> wordNumByGid(Crossword cwList) {
 		String sql = "SELECT COUNT(wordNum) FROM CWList WHERE gid=?";
-		return jdbcTemplate.query(sql, new RowMapper<CWList>() {
+		return jdbcTemplate.query(sql, new RowMapper<Crossword>() {
 
 			@Override
-			public CWList mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CWList list = new CWList(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
+			public Crossword mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Crossword list = new Crossword(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
 						rs.getString("word"), rs.getInt("xLocation"), rs.getInt("yLocation"));
 				return list;
 			}
@@ -197,7 +197,7 @@ public class CrossDao {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand randomGid ( CWList cwList ) {
+	public GidCommand randomGid ( Crossword cwList ) {
 		String sql = "SELECT gid FROM CWList WHERE gid ORDER BY RAND() limit 1";
 		return jdbcTemplate.queryForObject(sql, new RowMapper<GidCommand>() {
 
@@ -214,13 +214,13 @@ public class CrossDao {
 	 * @param cwList
 	 * @return
 	 */
-	public List<CWList> playGame( CWList cwList ) {
+	public List<Crossword> playGame( Crossword cwList ) {
 		String sql = "SELECT * FROM CWList WHERE gid = ?";
-		return jdbcTemplate.query(sql, new RowMapper<CWList>() {
+		return jdbcTemplate.query(sql, new RowMapper<Crossword>() {
 
 			@Override
-			public CWList mapRow(ResultSet rs, int rowNum) throws SQLException {
-				CWList cwList = new CWList(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
+			public Crossword mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Crossword cwList = new Crossword(rs.getInt("gid"), rs.getInt("gameSize"), rs.getInt("wordNum"), rs.getString("dir"), 
 						rs.getString("word"), rs.getInt("xLocation"), rs.getInt("yLocation"));
 				return cwList;
 			}

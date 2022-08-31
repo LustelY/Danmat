@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CrossWord {
+public class Word {
 	private int wid;
 	private String word;
 	private int len;
@@ -17,7 +17,7 @@ public class CrossWord {
 	private String def;
 	private String ex;
 	
-	public CrossWord() {
+	public Word() {
 		super();
 	}
 

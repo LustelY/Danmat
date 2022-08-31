@@ -74,7 +74,7 @@
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
-               		<h2>사이즈가 ${size} 인 게임 테이블 ${repeatNum}개 추가되었습니다.</h2>
+               		<h2>사이즈가 ${size*2+1} 인 게임 테이블 ${repeatNum}개 추가되었습니다.</h2>
 	              	<br>
 	              	<br>
 	              	<a href="/Danmat/manager/cross/crossList">
