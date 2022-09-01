@@ -21,7 +21,7 @@ public interface CrossService {
 	 * @param crossWord
 	 * @return
 	 */
-	public List<Word> allWord(Word crossWord);
+	public List<Word> allWord(Word word);
 	
 	
 	/**
@@ -29,7 +29,7 @@ public interface CrossService {
 	 * @param crossWord
 	 * @return
 	 */
-	public List<Word> randomWord(Word crossWord);
+	public List<Word> randomWord(Word word);
 
 	
 	/**
@@ -42,16 +42,16 @@ public interface CrossService {
 	
 	/**
 	 * 게임판을 작성 후 게임 리스트 중 오류가 있거나 해당 게임판과는 결이 맞지 않는 자료를 삭제하기 위한 메소드입니다.
-	 * @param cwList
+	 * @param crossword
 	 */
-	public void deleteList(Crossword cwList);
+	public void deleteList(int gid);
 	
 	
 	/**
 	 * 만들어진 게임판을 DB에 넣기 위한 메소드입니다.
 	 * @param cwList
 	 */
-	public void addToList(Crossword cwList);
+	public void addToList(Crossword crossword);
 	
 	
 	/**
@@ -59,7 +59,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand randomGid(Crossword cwList);
+	public GidCommand randomGid(Crossword crossword);
 	
 	
 	/**
@@ -67,7 +67,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public List<Crossword> playGame(Crossword cwList);
+	public List<Crossword> playGame(Crossword crossword);
 	
 	
 	/**
@@ -75,7 +75,7 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public GidCommand lastCWNum(Crossword cwList);
+	public GidCommand lastCWNum(Crossword crossword);
 	
 	/**
 	 * 게임판 생성 후 확인하며 삭제할 시 리스트를 뽑아내기 위해 중복된 gid값을 제거하고 오름차순으로 gid를 정리하기 위한 메소드입니다.
@@ -89,14 +89,14 @@ public interface CrossService {
 	 * @param cwList
 	 * @return
 	 */
-	public List<Crossword> findByGid(Crossword cwList);
+	public List<Crossword> findByGid(Crossword crossword);
 	
 	/**
 	 * 해당 gid값으로 List의 길이가 얼마정도인지를 알아내기 위한 메소드입니다. .length값으로 사용하시면 됩니다.
 	 * @param cwList
 	 * @return
 	 */
-	public int wordNumByGid(Crossword cwList);
+	public int wordNumByGid(Crossword crossword);
 	
 	
 	

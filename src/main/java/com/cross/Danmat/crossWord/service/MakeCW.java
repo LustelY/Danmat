@@ -194,7 +194,7 @@ public class MakeCW {
 					
 					int makeCount = 0;
 					
-					while(makeCount < 100) {
+					while(makeCount < 150) {
 						
 						/**
 						 * 가로인지 세로인지 검증을 해봅시다
@@ -219,7 +219,7 @@ public class MakeCW {
 										diry++;
 									}else {
 										System.out.println("case 1-1. 미작성");
-										makeCount = 100;
+										makeCount = 150;
 										dirx = 0;
 										diry = 0;
 									}
@@ -231,7 +231,7 @@ public class MakeCW {
 										diry++;
 									}else {
 										System.out.println("case 1-2. 미작성");
-										makeCount = 100;
+										makeCount = 150;
 										dirx = 0;
 										diry = 0;
 									}
@@ -250,7 +250,7 @@ public class MakeCW {
 										diry++;
 									}else {
 										System.out.println("case 2-1. 미작성");
-										makeCount = 100;
+										makeCount = 150;
 									}
 								}
 								//xNum, rW1의 길이의 합이 게임테이블의 크기를 벗어나게 된다면 세로인 경우밖에 없다.
@@ -260,7 +260,7 @@ public class MakeCW {
 										diry++;
 									}else {
 										System.out.println("case 2-2. 미작성");
-										makeCount = 100;
+										makeCount = 150;
 										dirx = 0;
 										diry = 0;
 									}
@@ -276,20 +276,20 @@ public class MakeCW {
 										dirx++;
 									}else {
 										System.out.println("case 3. 미작성");
-										makeCount = 100;
+										makeCount = 150;
 										dirx = 0;
 										diry = 0;
 									}
 								}else {
 									System.out.println("case 3-2. 미작성");
-									makeCount = 100;
+									makeCount = 150;
 									dirx = 0;
 									diry = 0;
 								}
 							}
 						}else {
 							System.out.println("case 4. 미작성");
-							makeCount = 100;
+							makeCount = 150;
 							diry = 0;
 							dirx = 0;
 						}
@@ -840,8 +840,8 @@ public class MakeCW {
 //		CrossDao crossDao = new CrossDao(datasource);
 //		CrossServiceImpl crossServiceImpl = new CrossServiceImpl(crossDao);
 //		CWList cwList = null;
-		int a = 5;
-		int b = 1;
+		int a = 6;
+		int b = 2;
 		
 		MakeCW makeCW;
 		makeCW = new MakeCW();

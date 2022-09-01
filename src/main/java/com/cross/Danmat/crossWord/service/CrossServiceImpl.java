@@ -40,8 +40,8 @@ public class CrossServiceImpl implements CrossService {
 		return crossDao.checkWord(check);
 	}
 	
-	public void deleteList(Crossword cwList) {
-		this.crossDao.deleteList(cwList);
+	public void deleteList(int gid) {
+		this.crossDao.deleteList(gid);
 	}
 	
 	public void addToList(Crossword cwList) {

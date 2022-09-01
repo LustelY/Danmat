@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crossword 생성</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mgMain.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/crossword/crossSearch.css'/>">
 <link rel="stylesheet" href="./css/font.css" />
 </head>
 
@@ -74,10 +74,10 @@
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
-             	   <h2>크로스 워드</h2> <br>
+             	   <h2>크로스 워드 생성 옵션</h2> <br>
 	                <form action="crossAdd" method="POST">
                 		<div>
-                			<p>섹션당 사이즈 ( 게임 사이즈는 섹션 * 2 + 1 입니다 )</p>
+                			<p>섹션당 사이즈 ( 게임 사이즈는 섹션사이즈 * 2 + 1 입니다 )</p>
 		                	<input type="text" maxlength="1" name=size required/>
                 		</div>
                 		<div>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cross.Danmat.Config.DataSourceConfig;
 import com.cross.Danmat.crossWord.command.GidCommand;
@@ -28,9 +29,16 @@ public class CrossSearchController {
 	@Autowired
 	private CrossService crossService;
 	
+	@ModelAttribute("gidList")
+	public List<GidCommand> getGidList() {
+		List<GidCommand> list = new ArrayList<GidCommand>();
+		crossService.allGid().forEach(c -> list.add(new GidCommand(c.getTakeGid())));
+		return list;
+	}
+	
 	
 	@GetMapping
-	public String crossSearchForm(@ModelAttribute("Crossword") Crossword crossword, Model model) {
+	public String crossSearchForm(@ModelAttribute("GidList") Crossword crossword, Model model, GidCommand gidCommand) {
 		
 		
 		/**
@@ -121,7 +129,7 @@ public class CrossSearchController {
 			int g = game[i].get(0).getGameSize();
 			System.out.println("-------------------------------------------------");
 			for (int j = 0; j < g; j++) {
-				System.out.println(list[i][j]);
+//				System.out.println(list[i][j]);
 			}
 		}
 		System.out.println(list[0][4].get(1)); // 음절 위치에 제대로 들어갔는지 확인
@@ -147,26 +155,31 @@ public class CrossSearchController {
 			}
 			sb.append("</table></div>");
 			game_table[i].add(sb.toString());
+			System.out.println(sb.toString());
 			// StringBuilder 초기화
 			sb.setLength(0);
 		}
-		
-		
 		model.addAttribute("gameTable", game_table);
 		
 		
-		
-		
-		
+//		//Delete를 위해 model에 gidList에 담아두기
+//		List<GidCommand> gidList = crossService.allGid();
+//		model.addAttribute("gidList", gidList);
 		
 		
 		return "manager/cross/crossSearch";
 	}
 	
 	
-	//삭제를 위한 post
+//	//삭제를 위한 post
 	@PostMapping
-	public String deleteCW() {
+	public String deleteCW(@RequestParam("gid")int gid) {
+		crossService.deleteList(gid);
 		return "manager/cross/crossAfterDeleteCW";
 	}
+//	@GetMapping
+//	public String DeleteCWList(@RequestParam("takeGid")GidCommand gidCommand) {
+//		crossService.deleteList(gidCommand);
+//		return "redirect:/crossSearch";
+//	}
 }

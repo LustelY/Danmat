@@ -78,8 +78,13 @@
            	    <h2>게임 리스트</h2> <br>
            	    <!-- 역순 표시 방법 -->
            	    <c:set var="tableLength" value="${fn:length(gameTable)}"/>
+           	    <c:set var="gidLength" value = "${fn:length(gidList)}"/>
        		 	<c:forEach items="${gameTable}" var="game" varStatus="status">
        		 		${gameTable[tableLength - status.count]}
+       		 		<form action="/Danmat/manager/cross/crossDelete" method="get">
+       		 			<input type="hidden" name="gid" value="${gidList[gidLength - status.count].takeGid}"/>
+       		 			<input type="submit" value="삭제하기">
+       		 		</form>
        		 	</c:forEach>
        		 	
 				       		 	

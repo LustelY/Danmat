@@ -48,6 +48,12 @@
               <span class="title">소식</span>
             </a>
           </li>
+          <li>
+            <a href="/Danmat/manager/cross/crossList">
+              <span class="icon"><ion-icon name="alert-circle-outline"></ion-icon></span>
+              <span class="title">게임설정</span>
+            </a>
+          </li>
         </ul>
       </div>
 
