@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class Board {
 	private int board_idx; // 게시물 번호
-	private String notice;
+	private String notice; // 공지 등록 여부 (공지사항, 게시판 2개가 합쳐지면서 추가)
 	private String userId; // 유저 id
 	private String title; // 게시글 제목
 	private String content; // 게시글 목록

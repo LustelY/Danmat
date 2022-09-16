@@ -26,18 +26,6 @@ public class BoardDao {
 	public List<Board> boardList() {
 		String sql = "select * from board where delete_yn='n' and notice='N' order by board_idx desc";
 		return jdbcTemplate.query(sql,  new BoardRowMapper());
-	
-//		return jdbcTemplate.query(sql, new RowMapper<Board>() {
-
-//			@Override
-//			public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
-//				Board board = new Board(rs.getInt("board_idx"), rs.getString("userId"), rs.getString("title"),
-//						rs.getString("content"), rs.getDate("createDate"), rs.getDate("updateDate"),
-//						rs.getDate("deleteDate"), rs.getString("delete_yn"), rs.getLong("readCount"),
-//						rs.getLong("replyCount"));
-//				return board;
-//			}
-//		});
 	}
 	
 	// 공지 목록
@@ -82,7 +70,7 @@ public class BoardDao {
 //		}, "%"+title+"%");
 	}
 	
-	public List<Board> SearchBoardByUserId(String userId){
+	public List<Board> SearchBoardByUserId(String userId) {
 		String sql = "select * from board where userId = ?";
 		return jdbcTemplate.query(sql, new BoardRowMapper(), userId);
 	}

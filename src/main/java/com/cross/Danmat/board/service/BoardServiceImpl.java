@@ -58,16 +58,16 @@ public class BoardServiceImpl implements BoardService {
 	public void readCount(int board_idx) {
 		boardDao.readCount(board_idx);		
 	}
-
+	
+	// 제목 검색
 	@Override
 	public List<Board> SearchboardByTitle(String title) {
-		// TODO Auto-generated method stub
 		return boardDao.SearchBoardByTitle(title);
 	}
 
+	// id 검색
 	@Override
 	public List<Board> SearchboardByUserId(String userId) {
-		// TODO Auto-generated method stub
 		return boardDao.SearchBoardByUserId(userId);
 	}
 	

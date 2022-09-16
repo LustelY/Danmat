@@ -27,9 +27,9 @@ public class BoardCreateController {
 	@PostMapping
 	public String boardCreate(@ModelAttribute("board")
 	Board board, Model model) {
-		System.out.println(board.getNotice());
-		if(board.getNotice() == null) {
-			board.setNotice("N");
+//		System.out.println(board.getNotice());
+		if(board.getNotice() == null) {	// 관리자 로그인 후 공지등록 버튼이 체크된 경우에만 공지로 등록되도록
+			board.setNotice("N");		// 공지등록 버튼이 체크 안된 경우 Notice 칼럼값 N
 		}
 		boardService.boardCreate(board);
 		model.addAttribute("boardList", boardService.boardList());

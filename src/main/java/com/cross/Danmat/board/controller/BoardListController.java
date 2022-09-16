@@ -26,7 +26,6 @@ public class BoardListController {
 	         List<Board> boardList = boardService.boardList();
 	         List<Board> noticeBoardList = boardService.noticeBoardList();
 	         String page_input = "";
-//	         int page_size = (boardList.size() - 1)/8 + 1;
 	         int page_size = (boardList.size()-1)/8 + 1;
 	         
 	         for(int i = 0; i < page_size; i++) {
@@ -37,19 +36,9 @@ public class BoardListController {
 	         model.addAttribute("page" , page);
 	         model.addAttribute("page_num", page_input);
 	         model.addAttribute("notice_list", noticeBoardList);
-	         System.out.println();
 	         context.close();
 	         return "board/BoardList";
 	      }
-//		  @GetMapping
-//	      public String BoardListForm(Model model) {
-//	         List<Board> boardList = boardService.boardList();
-//	         int page = 0;
-//	         model.addAttribute("boardList", boardList);
-//	         model.addAttribute("page", page);
-//	         context.close();
-//	         return "board/BoardList";
-//	      }
 
 		@PostMapping
 	      public String BoardListForm(Model model, @RequestParam("page")int page) {
@@ -57,7 +46,6 @@ public class BoardListController {
 	         List<Board> noticeBoardList = boardService.noticeBoardList();
 	         page = (page-1) * 10;
 	         String page_input = "";
-//	         int page_size = (boardList.size() - 1)/8 + 1;
 	         int page_size = (boardList.size()-1)/8 + 1;
 	         for(int i = 0; i < page_size; i++) {
 	            page_input += "<li><input type=submit name=page value="+(i+1)+"></li>";
@@ -70,16 +58,6 @@ public class BoardListController {
 	         context.close();
 	         return "board/BoardList";
 	      }
-//		@PostMapping
-//	      public String BoardListForm(Model model, @RequestParam("page")int page) {
-//	         List<Board> boardList = boardService.boardList();
-//	         page = (page-1) * 10;
-//	         model.addAttribute("boardList", boardList);
-//	         model.addAttribute("page" , page);
-//	         context.close();
-//	         return "board/BoardList";
-//	      }
-		
-		
+	
 		
 }

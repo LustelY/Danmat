@@ -31,7 +31,7 @@ public class BoardSearchController {
 	public String searchTitle(@RequestParam("type")String type,
 			@RequestParam("Name") String name, Model model) {
 		String page_input = "";
-		System.out.println(name);
+//		System.out.println(name);
 		if(type.equals("title")) {
 			List<Board> searchTitle = boardService.SearchboardByTitle(name);
 			model.addAttribute("boardList", searchTitle);
